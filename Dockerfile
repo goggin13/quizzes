@@ -14,7 +14,7 @@ RUN gem install rails -v 6.0.2
 RUN gem install bundler -v 2.1.2
 
 # Define where our application will live inside the image
-ENV RAILS_ROOT /var/www/wrestling
+ENV RAILS_ROOT /var/www/quizzes
 ENV RAILS_ENV development
 
 # Create application home. App server will need the pids dir so just create everything in one shot

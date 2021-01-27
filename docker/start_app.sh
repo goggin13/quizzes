@@ -4,7 +4,7 @@ docker run \
   -it \
   --env PORT=5000 \
   -p 5000:5000 \
-  --name grocery-list-web \
-  -v $LOCAL_VOLUME_PATH:/var/www/grocery-list \
+  --name quizzes-web \
+  -v $LOCAL_VOLUME_PATH:/var/www/quizzes \
   --rm \
-  goggin13/grocery-list
+  goggin13/quizzes
