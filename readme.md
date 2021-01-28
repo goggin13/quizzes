@@ -25,3 +25,11 @@ ToDo
 Public pages
 /exam/<id>/users/register/
 /exam/<id>
+
+```
+./docker/build_and_tag.sh
+./docker/exec.sh
+bundle exec rake db:test:prepare
+```
+
+DePaul MENP

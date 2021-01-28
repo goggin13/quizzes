@@ -26,7 +26,7 @@ WORKDIR $RAILS_ROOT
 # Use the Gemfiles as Docker cache markers. Always bundle before copying app src.
 # (the src likely changed and we don't want to invalidate Docker's cache too early)
 COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
+# COPY Gemfile.lock Gemfile.lock
 
 # Finish establishing our Ruby enviornment
 RUN bundle install
