@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :question do
     prompt { "Prompt" }
-    source { "Source" }
+    source { "MyString" }
     explanation { "MyText" }
     association :exam
   end

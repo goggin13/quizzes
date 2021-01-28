@@ -12,7 +12,7 @@ RSpec.describe "questions/index", type: :view do
   it "renders a list of questions" do
     render
     assert_select "tr>td", text: "Prompt".to_s, count: 2
-    assert_select "tr>td", text: "Source".to_s, count: 2
+    assert_select "tr>td", text: "MyString".to_s, count: 2
     assert_select "tr>td", text: "MyText".to_s, count: 2
   end
 end

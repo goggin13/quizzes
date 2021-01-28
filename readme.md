@@ -10,8 +10,8 @@ ToDo
   * explanation
   * belongs_to :exam
   * has_many :options
-* Options
-  * Text
+* Answers
+  * prompt
   * correct
   * belongs_to :question
 * Users
