@@ -13,8 +13,10 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/answers", type: :request do
-  # Answer. As you add validations to Answer, be sure to
-  # adjust the attributes here as well.
+  before do
+    sign_in_admin
+  end
+
   let(:question) { FactoryBot.create(:question) }
   let(:valid_attributes) {
     {

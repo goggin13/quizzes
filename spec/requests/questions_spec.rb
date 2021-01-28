@@ -13,8 +13,10 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/questions", type: :request do
-  # Question. As you add validations to Question, be sure to
-  # adjust the attributes here as well.
+  before do
+    sign_in_admin
+  end
+
   let(:exam) { FactoryBot.create(:exam) }
   let(:valid_attributes) {
     {

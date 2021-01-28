@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :exams do
     resources :questions, only: [:index, :new, :create]
   end
@@ -7,4 +8,7 @@ Rails.application.routes.draw do
     resources :answers, only: [:index, :new, :create]
   end
   resources :answers, only: [:show, :edit, :update, :destroy]
+
+  get 'public/index'
+  root to: "public#index"
 end

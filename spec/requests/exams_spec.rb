@@ -13,8 +13,10 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/exams", type: :request do
-  # Exam. As you add validations to Exam, be sure to
-  # adjust the attributes here as well.
+  before do
+    sign_in_admin
+  end
+
   let(:valid_attributes) {
     {title: "Practice Exam"}
   }
