@@ -1,9 +1,10 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[ show edit update destroy ]
+  before_action :set_exam, only: [:index, :new, :create]
 
   # GET /questions or /questions.json
   def index
-    @questions = Question.all
+    @questions = @exam.questions.all
   end
 
   # GET /questions/1 or /questions/1.json
@@ -12,7 +13,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    @question = Question.new
+    @question = @exam.questions.build
   end
 
   # GET /questions/1/edit
@@ -21,7 +22,7 @@ class QuestionsController < ApplicationController
 
   # POST /questions or /questions.json
   def create
-    @question = Question.new(question_params)
+    @question = @exam.questions.build(question_params)
 
     respond_to do |format|
       if @question.save
@@ -51,7 +52,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: "Question was successfully destroyed." }
+      format.html { redirect_to exam_questions_url(@question.exam), notice: "Question was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -60,6 +61,10 @@ class QuestionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_question
       @question = Question.find(params[:id])
+    end
+
+    def set_exam
+      @exam = Exam.find(params[:exam_id])
     end
 
     # Only allow a list of trusted parameters through.

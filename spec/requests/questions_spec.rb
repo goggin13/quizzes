@@ -15,8 +15,8 @@
 RSpec.describe "/questions", type: :request do
   # Question. As you add validations to Question, be sure to
   # adjust the attributes here as well.
+  let(:exam) { FactoryBot.create(:exam) }
   let(:valid_attributes) {
-    exam = FactoryBot.create(:exam)
     {
       prompt: "MyPrompt",
       source: "MySource",
@@ -36,7 +36,7 @@ RSpec.describe "/questions", type: :request do
   describe "GET /index" do
     it "renders a successful response" do
       Question.create! valid_attributes
-      get questions_url
+      get exam_questions_url(exam)
       expect(response).to be_successful
     end
   end
@@ -51,7 +51,7 @@ RSpec.describe "/questions", type: :request do
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_question_url
+      get new_exam_question_url(exam)
       expect(response).to be_successful
     end
   end
@@ -68,12 +68,12 @@ RSpec.describe "/questions", type: :request do
     context "with valid parameters" do
       it "creates a new Question" do
         expect {
-          post questions_url, params: { question: valid_attributes }
+          post exam_questions_url(exam), params: { question: valid_attributes }
         }.to change(Question, :count).by(1)
       end
 
       it "redirects to the created question" do
-        post questions_url, params: { question: valid_attributes }
+        post exam_questions_url(exam), params: { question: valid_attributes }
         expect(response).to redirect_to(question_url(Question.last))
       end
     end
@@ -81,12 +81,12 @@ RSpec.describe "/questions", type: :request do
     context "with invalid parameters" do
       it "does not create a new Question" do
         expect {
-          post questions_url, params: { question: invalid_attributes }
+          post exam_questions_url(exam), params: { question: invalid_attributes }
         }.to change(Question, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post questions_url, params: { question: invalid_attributes }
+        post exam_questions_url(exam), params: { question: invalid_attributes }
         expect(response.status).to eq(422)
       end
     end
@@ -137,7 +137,7 @@ RSpec.describe "/questions", type: :request do
     it "redirects to the questions list" do
       question = Question.create! valid_attributes
       delete question_url(question)
-      expect(response).to redirect_to(questions_url)
+      expect(response).to redirect_to(exam_questions_url(exam))
     end
   end
 end
