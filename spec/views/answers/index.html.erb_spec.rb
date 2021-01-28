@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "answers/index", type: :view do
   before(:each) do
+    @question = FactoryBot.create(:question)
     assign(:answers, [
-      FactoryBot.create(:answer),
-      FactoryBot.create(:answer)
+      FactoryBot.create(:answer, question: @question),
+      FactoryBot.create(:answer, question: @question)
     ])
   end
 

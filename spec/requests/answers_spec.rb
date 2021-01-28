@@ -15,10 +15,10 @@
 RSpec.describe "/answers", type: :request do
   # Answer. As you add validations to Answer, be sure to
   # adjust the attributes here as well.
+  let(:question) { FactoryBot.create(:question) }
   let(:valid_attributes) {
-    @question = FactoryBot.create(:question)
     {
-      question_id: @question.id,
+      question_id: question.id,
       prompt: "MyPrompt",
     }
   }
@@ -32,7 +32,7 @@ RSpec.describe "/answers", type: :request do
   describe "GET /index" do
     it "renders a successful response" do
       Answer.create! valid_attributes
-      get answers_url
+      get question_answers_url(question)
       expect(response).to be_successful
     end
   end
@@ -47,7 +47,7 @@ RSpec.describe "/answers", type: :request do
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_answer_url
+      get new_question_answer_url(question)
       expect(response).to be_successful
     end
   end
@@ -64,12 +64,12 @@ RSpec.describe "/answers", type: :request do
     context "with valid parameters" do
       it "creates a new Answer" do
         expect {
-          post answers_url, params: { answer: valid_attributes }
+          post question_answers_url(question), params: { answer: valid_attributes }
         }.to change(Answer, :count).by(1)
       end
 
       it "redirects to the created answer" do
-        post answers_url, params: { answer: valid_attributes }
+        post question_answers_url(question), params: { answer: valid_attributes }
         expect(response).to redirect_to(answer_url(Answer.last))
       end
     end
@@ -77,12 +77,12 @@ RSpec.describe "/answers", type: :request do
     context "with invalid parameters" do
       it "does not create a new Answer" do
         expect {
-          post answers_url, params: { answer: invalid_attributes }
+          post question_answers_url(question), params: { answer: invalid_attributes }
         }.to change(Answer, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post answers_url, params: { answer: invalid_attributes }
+        post question_answers_url(question), params: { answer: invalid_attributes }
         expect(response.status).to eq(422)
       end
     end
@@ -131,7 +131,7 @@ RSpec.describe "/answers", type: :request do
     it "redirects to the answers list" do
       answer = Answer.create! valid_attributes
       delete answer_url(answer)
-      expect(response).to redirect_to(answers_url)
+      expect(response).to redirect_to(question_answers_url(question))
     end
   end
 end

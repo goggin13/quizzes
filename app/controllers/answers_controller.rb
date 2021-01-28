@@ -1,9 +1,10 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: %i[ show edit update destroy ]
+  before_action :set_question, only: [:index, :new, :create]
 
   # GET /answers or /answers.json
   def index
-    @answers = Answer.all
+    @answers = @question.answers.all
   end
 
   # GET /answers/1 or /answers/1.json
@@ -12,7 +13,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
-    @answer = Answer.new
+    @answer = @question.answers.build
   end
 
   # GET /answers/1/edit
@@ -21,7 +22,7 @@ class AnswersController < ApplicationController
 
   # POST /answers or /answers.json
   def create
-    @answer = Answer.new(answer_params)
+    @answer = @question.answers.build(answer_params)
 
     respond_to do |format|
       if @answer.save
@@ -51,7 +52,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
     respond_to do |format|
-      format.html { redirect_to answers_url, notice: "Answer was successfully destroyed." }
+      format.html { redirect_to question_answers_url(@answer.question), notice: "Answer was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -60,6 +61,10 @@ class AnswersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_answer
       @answer = Answer.find(params[:id])
+    end
+
+    def set_question
+      @question = Question.find(params[:question_id])
     end
 
     # Only allow a list of trusted parameters through.
