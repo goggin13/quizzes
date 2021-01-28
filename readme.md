@@ -23,8 +23,8 @@ ToDo
  
 
 Public pages
-/exam/<id>/users/register/
-/exam/<id>
+/
+/practice/question_id
 
 ```
 ./docker/build_and_tag.sh
@@ -32,4 +32,4 @@ Public pages
 bundle exec rake db:test:prepare
 ```
 
-DePaul MENP
+
