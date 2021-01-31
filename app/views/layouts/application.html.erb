@@ -6,11 +6,31 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= favicon_link_tag asset_path('castle.png') %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="header">
+      <%= link_to(image_tag("trumpet", id: "banner-right"), "/")  %>
+      <%= link_to(image_tag("banner", id: "banner-left"), "/")  %>
+
+
+      <% if signed_in? %>
+        <%= link_to("KnightShift", "/") %>
+        <br/>
+        <%= current_user.username %>
+        <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
+
+        <% if current_user.admin? %>
+          <%= link_to("Exams", exams_url) %>
+          <%= link_to("Public", public_index_url) %>
+        <% end %>
+      <% end %>
+    </div>
+    <div id="main">
+      <%= yield %>
+    </div>
   </body>
 </html>

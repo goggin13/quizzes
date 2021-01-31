@@ -7,4 +7,8 @@ class Question < ApplicationRecord
   def to_s
     "#{prompt}:\n\t#{answers.map(&:to_s).join("\n\t")}"
   end
+
+  def next_question
+    exam.questions.where("id > ?", id).order(id: :asc).first
+  end
 end

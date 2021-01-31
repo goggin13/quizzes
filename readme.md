@@ -1,19 +1,9 @@
 ToDo
 
-* Exam
-  * Title
-  * Open/Closed
-  * has_many :questions
-* Questions
-  * prompt
-  * source
-  * explanation
-  * belongs_to :exam
-  * has_many :options
-* Answers
-  * prompt
-  * correct
-  * belongs_to :question
+* ingest pharm style questions
+* show landing page with no open exams (or multiple open exams?)
+* record users score
+
 * Users
  * has_many :user_question_answers
 * UserQuestionAnswer
