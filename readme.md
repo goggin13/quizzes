@@ -1,9 +1,10 @@
 ToDo
 
-* fix answer flashing on advancing question
-* test on phone
 * deploy to heroku
 * script to upload questions to heroku
+* fix answer flashing on advancing question
+* unregister click listeners after submitting answer
+* test on phone
 * record users score
 * save your account prompt
 * business metrics page - users, questions answered, etc
@@ -13,6 +14,7 @@ ToDo
 * leaderboard
 * ingest pharm style questions
 * JS testing for practice question interactions
+* don't upload duplicate questions
 X display/handle multiple answer questions
 X thorough tests around practice view
 X troubleshoot font
