@@ -10,16 +10,28 @@ require("channels")
 require('jquery')
 
 $(document).on("turbolinks:load", function () {
-  console.log("LOAD");
+  $multiSelectButton = $("#multi-select-submit")
+  isMultiSelect = $multiSelectButton.length;
+
+  function submitAnswers() {
+    $multiSelectButton.hide();
+    $("#explanation").fadeIn(250);
+    $("#answers li").addClass("answered");
+  }
+
+  $multiSelectButton.click(submitAnswers);
+
   $("#answers li").click(function () {
-    $("#answers").addClass("answered");
-    $("#explanation").fadeIn(250);
-    $(this).addClass("selected");
-    console.log("incorrect!");
-  });
-  $("#correct").click(function () {
-    $("#answers").addClass("answered");
-    $("#explanation").fadeIn(250);
-    console.log("correct!");
+    $(this).toggleClass("selected");
+    if (isMultiSelect) {
+      $multiSelectButton.fadeIn();
+    } else {
+      submitAnswers();
+    }
   });
 });
+
+function answeredCorrectly($li) {
+  return ($li.hasClass("correct") && $li.hasClass("selected"))
+    || (!$li.hasClass("correct") && !$li.hasClass("selected"));
+}

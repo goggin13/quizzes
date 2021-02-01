@@ -1,12 +1,23 @@
 ToDo
 
 * fix answer flashing on advancing question
-* troubleshoot font
-* ingest pharm style questions
-* show landing page with no open exams (or multiple open exams?)
+* test on phone
+* deploy to heroku
+* script to upload questions to heroku
 * record users score
 * save your account prompt
-* thorough tests around practice view
+* business metrics page - users, questions answered, etc
+* error handling / monitoring / logging
+* slack preview
+>>> post 301 midterm MVP requirements
+* leaderboard
+* ingest pharm style questions
+* JS testing for practice question interactions
+X display/handle multiple answer questions
+X thorough tests around practice view
+X troubleshoot font
+X show landing page with no open exams (or multiple open exams?)
+
 
 * Users
  * has_many :user_question_answers

@@ -3,7 +3,7 @@ class PublicController < ApplicationController
   before_action :_set_current_user
 
   def index
-    @exam = Exam.where(open: true).first
+    @exams = Exam.where(open: true).all
   end
 
   def practice

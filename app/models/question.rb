@@ -11,4 +11,12 @@ class Question < ApplicationRecord
   def next_question
     exam.questions.where("id > ?", id).order(id: :asc).first
   end
+
+  def correct_answers
+    answers.where(correct: true)
+  end
+
+  def is_multi_select?
+    correct_answers.count > 1
+  end
 end

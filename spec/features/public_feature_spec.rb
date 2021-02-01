@@ -44,10 +44,6 @@ RSpec.describe "Publics", type: :feature do
         expect(page).to have_link(@exam.title, href: "/public/practice/#{@question.id}")
       end
     end
-
-    context "with no open exam" do
-      xit "renders a welcome page"
-    end
   end
 
   describe "practice" do
@@ -59,6 +55,37 @@ RSpec.describe "Publics", type: :feature do
       expect(page).to have_content(@answer_B.prompt)
       expect(page).to have_content(@answer_C.prompt)
       expect(page).to have_content(@question.explanation)
+    end
+
+    it "displays a link to the next question" do
+      next_question = FactoryBot.create(:question, exam: @exam)
+      visit "/public/practice/#{@question.id}"
+      expect(page).to have_link("Next", href: "/public/practice/#{next_question.id}")
+    end
+
+    it "reads the exam is completed if there is no next question" do
+      visit "/public/practice/#{@question.id}"
+      expect(page).to have_content("You have completed this training session")
+    end
+
+    describe "single choice question" do
+      it "does not have a submit button" do
+        expect(page).to_not have_button("Submit")
+      end
+    end
+
+    describe "multi select question" do
+      it "renders a submit button" do
+        @answer_B.update_attribute(:correct, true)
+        visit "/public/practice/#{@question.id}"
+        expect(page).to have_button("Submit")
+      end
+
+      it "Adds multi select specific text" do
+        @answer_B.update_attribute(:correct, true)
+        visit "/public/practice/#{@question.id}"
+        expect(page).to have_content("Select all that apply")
+      end
     end
   end
 end

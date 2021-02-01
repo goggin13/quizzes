@@ -4,4 +4,14 @@
   The path is long but the rewards are great
   <%= image_tag("horse") %>
 </p>
-<p>Click here to begin your training for <%= link_to(@exam.title, public_practice_path(question_id: @exam.questions.first!.id)) %></p>
+<p>
+  Choose from the below to begin training.
+  <ul id="exam-list">
+    <% @exams.each do |exam| %>
+      <li>
+        <%= image_tag("crossed-swords", class: "shield-bullet") %>
+        <%= link_to(exam.title, public_practice_path(question_id: exam.questions.first!.id)) %>
+      </li>
+    <% end %>
+  </ul>
+</p>

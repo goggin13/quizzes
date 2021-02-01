@@ -1,23 +1,31 @@
-<h1>Question <%= @index %>/<%= @total %></h1>
-<p id="progress_bar">
-  <%= image_tag("castle", id: "progress_castle") %>
-  <% (@index - 1).times do %>
-    <%= image_tag("shield", id: "progress_shield") %>
-  <% end %>
+<h1 class="knightshift-font">Question <%= @index %>/<%= @total %></h1>
+<p><%= @question.prompt %></p>
+
+<p class="knightshift-font">
   <%= image_tag("knight_on_horse", id: "progress_knight") %>
+
+  <% if @question.is_multi_select? %>
+      Select all that apply
+      <%= image_tag("dragon", id:"select-all-dragon") %>
+  <% else %>
+    Choose wisely.
+  <% end %>
 </p>
 <div class="clear"></div>
-<p><%= @question.prompt %></p>
 
 <ul id="answers">
 <% @question.answers.order("random()").each do |answer| %>
   <% if answer.correct? %>
-    <li id="correct"><%= answer.prompt %></li>
+    <li class="correct"><%= answer.prompt %></li>
   <% else %>
     <li><%= answer.prompt %></li>
   <% end %>
 <% end %>
 </ul>
+
+<% if @question.is_multi_select? %>
+  <button id="multi-select-submit" class="hide">Submit</button>
+<% end %>
 
 <div id="explanation">
   

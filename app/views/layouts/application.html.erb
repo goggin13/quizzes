@@ -6,28 +6,31 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= favicon_link_tag asset_path('castle.png') %>
+    <%= favicon_link_tag asset_path('helmet.png') %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta property="og:title" content="Home" />
+    <meta property="og:site_name" content="KnightShift" />
+    <meta property="og:description" content="Your DePaul nursing exam training grounds" />
+    <meta property="og:image" content="<%= image_url('helmet') %>" />
   </head>
 
   <body>
     <div id="header">
       <%= link_to(image_tag("trumpet", id: "banner-right"), "/")  %>
       <%= link_to(image_tag("banner", id: "banner-left"), "/")  %>
-      <%= link_to("KnightShift", "/", id: "banner-text") %>
+      <%= link_to("KnightShift", "/", id: "banner-text", class: "knightshift-font") %>
 
 
       <% if signed_in? %>
         <br/>
-        <%= current_user.username %>
-        <br/>
         <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
 
         <% if current_user.admin? %>
-          <br/>
+          |
           <%= link_to("Exams", exams_url) %>
-          <br/>
+          |
           <%= link_to("Public", public_index_url) %>
         <% end %>
       <% end %>
