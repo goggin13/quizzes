@@ -1,10 +1,10 @@
 <h1>Question <%= @index %>/<%= @total %></h1>
 <p id="progress_bar">
   <%= image_tag("castle", id: "progress_castle") %>
-  <%= image_tag("knight_on_horse", id: "progress_knight") %>
   <% (@index - 1).times do %>
     <%= image_tag("shield", id: "progress_shield") %>
   <% end %>
+  <%= image_tag("knight_on_horse", id: "progress_knight") %>
 </p>
 <div class="clear"></div>
 <p><%= @question.prompt %></p>
@@ -29,6 +29,10 @@
     <% end %>
   </p>
 
-
-  <p><%= @question.explanation %></p>
+  <% if @question.explanation.present? %>
+    <p>
+      <%= image_tag("scroll", id: "explanation-scroll") %>
+      <%= @question.explanation %>
+    </p>
+  <% end %>
 </div>

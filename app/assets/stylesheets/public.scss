@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'ringbearer';
-  src: url('ringbearer.tff')
+  src: asset_url('ringbearer.tff');
 }
 
 #answers li {
@@ -34,10 +34,13 @@
 #banner-left {
   float: left;
 }
+#banner-text {
+  font-size: 3em;
+  font-family: "ringbearer";
+}
 #header {
   text-align: center;
   height: 75px;
-  font-family: "ringbearer";
 }
 #header img {
   height: 50px;
@@ -48,7 +51,6 @@
 }
 // 133 × 191
 #progress_castle {
-  float: right;
   width: 65px;
   height: 95px
 }
@@ -63,4 +65,8 @@
 }
 .clear {
   clear: both;
+}
+
+#explanation-scroll {
+  float: left;
 }

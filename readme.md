@@ -1,10 +1,12 @@
 ToDo
 
 * fix answer flashing on advancing question
+* troubleshoot font
 * ingest pharm style questions
 * show landing page with no open exams (or multiple open exams?)
 * record users score
 * save your account prompt
+* thorough tests around practice view
 
 * Users
  * has_many :user_question_answers
