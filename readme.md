@@ -6,15 +6,19 @@ ToDo
 * business metrics page - users, questions answered, etc
 * error handling / monitoring / logging
 * slack preview (better copy?)
-* procfile
 
 >>> post 301 midterm MVP requirements
 
+* display chemical notation nicely
 * leaderboard
 * ingest pharm style questions
+  * Multi-line explanations
+  * no letters for choice, just first answer
 * JS testing for practice question interactions
 * don't upload duplicate questions
 * assets resized and to S3
+
+X procfile
 X fix answer flashing on advancing question
 X don't crash home page when there is an exam with no questions
 X deploy to heroku
