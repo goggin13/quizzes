@@ -17,6 +17,7 @@ $(document).on("turbolinks:load", function () {
     $multiSelectButton.hide();
     $("#explanation").fadeIn(250);
     $("#answers li").addClass("answered");
+    $("#answers li").unbind("click");
   }
 
   $multiSelectButton.click(submitAnswers);
