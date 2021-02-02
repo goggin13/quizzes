@@ -43,6 +43,12 @@ RSpec.describe "Publics", type: :feature do
         visit '/'
         expect(page).to have_link(@exam.title, href: "/public/practice/#{@question.id}")
       end
+
+      it "does not crash if there are no exams with questions" do
+        @question.destroy
+        visit '/'
+        expect(page).to have_content("The path is long but the rewards are great")
+      end
     end
   end
 

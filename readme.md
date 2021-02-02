@@ -1,15 +1,12 @@
 ToDo
 
-* deploy to heroku
-* script to upload questions to heroku
-* don't crash home page when there is an exam with no questions
 * fix answer flashing on advancing question
 * test on phone
 * record users score
 * save your account prompt
 * business metrics page - users, questions answered, etc
 * error handling / monitoring / logging
-* slack preview
+* slack preview (better copy?)
 * procfile
 >>> post 301 midterm MVP requirements
 * leaderboard
@@ -17,6 +14,9 @@ ToDo
 * JS testing for practice question interactions
 * don't upload duplicate questions
 * assets resized and to S3
+X don't crash home page when there is an exam with no questions
+X deploy to heroku
+X script to upload questions to heroku
 X display/handle multiple answer questions
 X thorough tests around practice view
 X troubleshoot font
