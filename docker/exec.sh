@@ -8,6 +8,7 @@ else
   docker run \
     -it \
     --env PORT=5000 \
+    --env RAILS_ENV=test \
     -p 5000:5000 \
     --name quizzes-console \
     -v $LOCAL_VOLUME_PATH:/var/www/quizzes \

@@ -15,6 +15,7 @@ ToDo
 * ingest pharm style questions
 * JS testing for practice question interactions
 * don't upload duplicate questions
+* assets resized to S3
 X display/handle multiple answer questions
 X thorough tests around practice view
 X troubleshoot font
