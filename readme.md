@@ -3,7 +3,6 @@ ToDo
 * deploy to heroku
 * script to upload questions to heroku
 * fix answer flashing on advancing question
-* unregister click listeners after submitting answer
 * test on phone
 * record users score
 * save your account prompt
@@ -15,11 +14,12 @@ ToDo
 * ingest pharm style questions
 * JS testing for practice question interactions
 * don't upload duplicate questions
-* assets resized to S3
+* assets resized and to S3
 X display/handle multiple answer questions
 X thorough tests around practice view
 X troubleshoot font
 X show landing page with no open exams (or multiple open exams?)
+X unregister click listeners after submitting answer
 
 
 * Users

@@ -1,15 +1,15 @@
 <h1>Welcome, <%= current_user.username %></h1>
 <p>
-  <%= image_tag("knight") %>
+  <%= image_tag("knight.png") %>
   The path is long but the rewards are great
-  <%= image_tag("horse") %>
+  <%= image_tag("horse.png") %>
 </p>
 <p>
   Choose from the below to begin training.
   <ul id="exam-list">
     <% @exams.each do |exam| %>
       <li>
-        <%= image_tag("crossed-swords", class: "shield-bullet") %>
+        <%= image_tag("crossed-swords.png", class: "shield-bullet") %>
         <%= link_to(exam.title, public_practice_path(question_id: exam.questions.first!.id)) %>
       </li>
     <% end %>

@@ -2,11 +2,11 @@
 <p><%= @question.prompt %></p>
 
 <p class="knightshift-font">
-  <%= image_tag("knight_on_horse", id: "progress_knight") %>
+  <%= image_tag("knight_on_horse.png", id: "progress_knight") %>
 
   <% if @question.is_multi_select? %>
       Select all that apply
-      <%= image_tag("dragon", id:"select-all-dragon") %>
+      <%= image_tag("dragon.png", id:"select-all-dragon") %>
   <% else %>
     Choose wisely.
   <% end %>
@@ -39,7 +39,7 @@
 
   <% if @question.explanation.present? %>
     <p>
-      <%= image_tag("scroll", id: "explanation-scroll") %>
+      <%= image_tag("scroll.png", id: "explanation-scroll") %>
       <%= @question.explanation %>
     </p>
   <% end %>
