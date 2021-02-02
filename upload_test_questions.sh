@@ -10,7 +10,7 @@ puts command
 puts `#{command}`
 
 url = "https://s3.amazonaws.com/mydecidekick.com/#{file_name.gsub(' ', '+')}"
-command = "REMOTE_FILE_URL=#{url} bundle exec rake ingest:remote_file"
+command = "RAILS_ENV=development DEBUG=true REMOTE_FILE_URL=#{url} bundle exec rake ingest:remote_file"
 puts command
-command = "REMOTE_FILE_URL=#{url} heroku run rake ingest:remote_file"
+command = "heroku run rake ingest:remote_file REMOTE_FILE_URL=#{url} DEBUG=true"
 puts command

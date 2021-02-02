@@ -2,6 +2,7 @@ ToDo
 
 * deploy to heroku
 * script to upload questions to heroku
+* don't crash home page when there is an exam with no questions
 * fix answer flashing on advancing question
 * test on phone
 * record users score
@@ -9,6 +10,7 @@ ToDo
 * business metrics page - users, questions answered, etc
 * error handling / monitoring / logging
 * slack preview
+* procfile
 >>> post 301 midterm MVP requirements
 * leaderboard
 * ingest pharm style questions
