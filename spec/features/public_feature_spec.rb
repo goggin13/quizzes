@@ -49,6 +49,12 @@ RSpec.describe "Publics", type: :feature do
         visit '/'
         expect(page).to have_content("The path is long but the rewards are great")
       end
+
+      it "only shows one entry for an exam with multiple questions" do
+        FactoryBot.create(:question, exam: @exam)
+        visit '/'
+        expect(page).to have_link(@exam.title, href: "/public/practice/#{@question.id}", count: 1)
+      end
     end
   end
 
