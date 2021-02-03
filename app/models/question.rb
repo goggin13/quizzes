@@ -1,6 +1,7 @@
 class Question < ApplicationRecord
   belongs_to :exam
   has_many :answers, dependent: :destroy
+  has_many :user_answers
   validates_presence_of :prompt
   validates_presence_of :source
 
@@ -18,5 +19,9 @@ class Question < ApplicationRecord
 
   def is_multi_select?
     correct_answers.count > 1
+  end
+
+  def answered?(user)
+    user_answers.where(user_id: user.id).count > 0
   end
 end

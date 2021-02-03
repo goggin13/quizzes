@@ -1,14 +1,15 @@
 ToDo
 
-* test on phone
-* record users score
 * save your account prompt
 * business metrics page - users, questions answered, etc
+* test on phone
 * error handling / monitoring / logging
 * slack preview (better copy?)
+* show source somewhere
 
 >>> post 301 midterm MVP requirements
 
+* display user results
 * display chemical notation nicely
 * leaderboard
 * ingest pharm style questions
@@ -18,6 +19,7 @@ ToDo
 * don't upload duplicate questions
 * assets resized and to S3
 
+X record users score
 X procfile
 X fix answer flashing on advancing question
 X don't crash home page when there is an exam with no questions
@@ -29,9 +31,6 @@ X troubleshoot font
 X show landing page with no open exams (or multiple open exams?)
 X unregister click listeners after submitting answer
 
-
-* Users
- * has_many :user_question_answers
 * UserQuestionAnswer
  * user_id
  * question_id

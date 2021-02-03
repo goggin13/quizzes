@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'public/index'
   root to: "public#index"
   get 'public/practice/:question_id', to: 'public#practice', as: :public_practice
+  post 'public/answer/:question_id', to: 'public#answer', as: :public_answer
 end

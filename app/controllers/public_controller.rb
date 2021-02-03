@@ -12,6 +12,22 @@ class PublicController < ApplicationController
     @remaining = @question.exam.questions.where("id > ?", @question.id).count
     @total = @question.exam.questions.count
     @index = @total - @remaining
+    @answered = @question.answered?(current_user)
+    @user = current_user
+  end
+
+  def answer
+    @question = Question.find(params[:question_id])
+    params[:answer_ids].each do |answer_id|
+      answer = Answer.find(answer_id)
+      UserAnswer.create!(
+        user: current_user,
+        question: @question,
+        answer: answer
+      )
+    end
+
+    render json: "{}"
   end
 
   def _set_current_user

@@ -4,7 +4,9 @@
 <p class="knightshift-font">
   <%= image_tag("knight_on_horse.png", id: "progress_knight") %>
 
-  <% if @question.is_multi_select? %>
+  <% if @answered %>
+    Review your work
+  <% elsif @question.is_multi_select? %>
       Select all that apply
       <%= image_tag("dragon.png", id:"select-all-dragon") %>
   <% else %>
@@ -13,13 +15,15 @@
 </p>
 <div class="clear"></div>
 
-<ul id="answers">
+<ul id="answers"
+    data-question-id='<%= @question.id %>'
+    class="<%= @answered ? 'answered' : 'unanswered' %>">
 <% @question.answers.order("random()").each do |answer| %>
-  <% if answer.correct? %>
-    <li class="correct"><%= answer.prompt %></li>
-  <% else %>
-    <li><%= answer.prompt %></li>
-  <% end %>
+  <li class="<%= answer.correct? ? 'correct' : '' %>
+             <%= (@answered && answer.selected_by?(@user)) ? 'selected' : '' %> "
+      data-answer-id='<%= answer.id %>'>
+      <%= answer.prompt %>
+  </li>
 <% end %>
 </ul>
 
@@ -27,13 +31,13 @@
   <button id="multi-select-submit" class="hide">Submit</button>
 <% end %>
 
-<div id="explanation">
-  
+<div id="explanation" class="<%= @answered ? '' : 'hide' %>">
   <p>
     <% if @next_question.present? %>
       <%= link_to("Next Question", public_practice_path(@next_question)) %>
     <% else %>
-      <b>You have completed this training session.</b>
+      <b>You have completed this training session.</b><br/>
+      <%= link_to("Head home", "/") %>
     <% end %>
   </p>
 
