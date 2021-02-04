@@ -1,6 +1,5 @@
 ToDo
 
-* save your account prompt
 * business metrics page - users, questions answered, etc
 * test on phone
 * error handling / monitoring / logging
@@ -9,6 +8,7 @@ ToDo
 
 >>> post 301 midterm MVP requirements
 
+* save your account prompt
 * display user results
 * display chemical notation nicely
 * leaderboard

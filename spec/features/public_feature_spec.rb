@@ -26,7 +26,6 @@ RSpec.describe "Publics", type: :feature do
       visit "/public/index"
       new_user = User.last
       expect(page).to have_content(new_user.username)
-      expect(page).to have_link("Logout")
     end
 
     it "does not create another new user on subsequent visits" do

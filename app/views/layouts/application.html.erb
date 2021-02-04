@@ -25,10 +25,9 @@
 
 
       <% if signed_in? %>
-        <br/>
-        <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
-
         <% if current_user.admin? %>
+          <br/>
+          <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
           |
           <%= link_to("Exams", exams_url) %>
           |

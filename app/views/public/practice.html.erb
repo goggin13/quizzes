@@ -13,6 +13,7 @@
     Choose wisely.
   <% end %>
 </p>
+
 <div class="clear"></div>
 
 <ul id="answers"
@@ -26,6 +27,11 @@
   </li>
 <% end %>
 </ul>
+
+<p id="source">
+  <%= image_tag("books.png") %>
+  Question from : <%= @question.source %>
+</p>
 
 <% if @question.is_multi_select? %>
   <button id="multi-select-submit" class="hide">Submit</button>

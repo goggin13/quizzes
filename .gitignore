@@ -41,3 +41,4 @@ yarn-debug.log*
 .DS_Store
 .aws_secret_access_key
 .aws_access_key_id
+**/.DS_Store
