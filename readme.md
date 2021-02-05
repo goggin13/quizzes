@@ -1,12 +1,12 @@
 ToDo
 
-* business metrics page - users, questions answered, etc
 * test on phone
 * error handling / monitoring / logging
 * slack preview (better copy?)
 
 >>> post 301 midterm MVP requirements
 
+* a much better business metrics page - users, questions answered, etc
 * show source somewhere?
 * cypress
 * save your account prompt

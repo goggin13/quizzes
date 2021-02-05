@@ -1,17 +1,22 @@
 <h1 class="knightshift-font">Welcome, <%= current_user.username %></h1>
-<p class="knightshift-font">
+<p class="knightshift-font center">
   <%= image_tag("knight.png") %>
+  <br/>
   The path is long but the rewards are great
-  <%= image_tag("horse.png") %>
 </p>
-<p class="knightshift-font">
+<p class="knightshift-font center">
   Choose from the below to begin training.
-  <ul id="exam-list">
-    <% @exams.each do |exam| %>
-      <li>
-        <%= image_tag("crossed-swords.png", class: "shield-bullet") %>
-        <%= link_to(exam.title_and_count, public_practice_path(question_id: exam.questions.first!.id)) %>
-      </li>
-    <% end %>
-  </ul>
+</p>
+
+<ul id="exam-list" class="center">
+  <% @exams.each do |exam| %>
+    <li>
+      <%= image_tag("crossed-swords.png", class: "shield-bullet") %>
+      <%= link_to(exam.title_and_count, public_practice_path(question_id: exam.questions.first!.id)) %>
+    </li>
+  <% end %>
+</ul>
+
+<p class="center">
+  <%= image_tag("horse.png") %>
 </p>
