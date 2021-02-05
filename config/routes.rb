@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/index'
   devise_for :users
   resources :exams do
     resources :questions, only: [:index, :new, :create]

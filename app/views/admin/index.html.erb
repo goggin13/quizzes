@@ -1,0 +1,12 @@
+<h1>The State of the Kingdowm</h1>
+
+<ul>
+  <li>Users: <%= User.count %></li>
+  <li>Questions Answered : <%= UserAnswer.count %></li>
+</ul>
+
+<ul>
+  <% @answered_question_counts.each do |question_id, count| %>
+    <li><%= question_id %> | <%= count %></li>
+  <% end %>
+</ul>
