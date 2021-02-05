@@ -7,6 +7,7 @@ class QuestionService
   def self.ingest(file_path)
     exam_name, source = File.basename(file_path).split("-")
     source = source.split(".")[0]
+    debug("exam: #{exam_name}")
     exam = Exam.where(title: exam_name).first!
 
     new(exam, source).ingest(file_path)
@@ -19,7 +20,7 @@ class QuestionService
       .reject(&:empty?)
 
     question_blobs.each do |question_blob|
-      debug(ingest_question(question_blob))
+      self.class.debug(ingest_question(question_blob))
     end
   end
 
@@ -82,7 +83,7 @@ class QuestionService
     line[0] == "["
   end
 
-  def debug(message)
+  def self.debug(message)
     if ENV["DEBUG"]
       puts message
     end

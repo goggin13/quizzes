@@ -10,7 +10,7 @@
     <% @exams.each do |exam| %>
       <li>
         <%= image_tag("crossed-swords.png", class: "shield-bullet") %>
-        <%= link_to(exam.title, public_practice_path(question_id: exam.questions.first!.id)) %>
+        <%= link_to(exam.title_and_count, public_practice_path(question_id: exam.questions.first!.id)) %>
       </li>
     <% end %>
   </ul>

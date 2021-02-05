@@ -1,9 +1,10 @@
 class Question < ApplicationRecord
   belongs_to :exam
+  has_many :user_answers, dependent: :destroy # must be before answers to accomodate foreign key constraints
   has_many :answers, dependent: :destroy
-  has_many :user_answers
   validates_presence_of :prompt
   validates_presence_of :source
+  validates_uniqueness_of :prompt
 
   def to_s
     "#{prompt}:\n\t#{answers.map(&:to_s).join("\n\t")}"

@@ -4,10 +4,11 @@ ToDo
 * test on phone
 * error handling / monitoring / logging
 * slack preview (better copy?)
-* show source somewhere
 
 >>> post 301 midterm MVP requirements
 
+* show source somewhere?
+* cypress
 * save your account prompt
 * display user results
 * display chemical notation nicely
