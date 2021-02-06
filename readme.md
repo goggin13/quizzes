@@ -1,12 +1,15 @@
 ToDo
 
-* test on phone
+* user results
+* ingest source
 * error handling / monitoring / logging
-* slack preview (better copy?)
+* make multiple OEV quizzes
 
 >>> post 301 midterm MVP requirements
 
+* query optimizing
 * a much better business metrics page - users, questions answered, etc
+* prompts on ingest task
 * show source somewhere?
 * cypress
 * save your account prompt

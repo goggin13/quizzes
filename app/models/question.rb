@@ -25,4 +25,8 @@ class Question < ApplicationRecord
   def answered?(user)
     user_answers.where(user_id: user.id).count > 0
   end
+
+  def correct_answers?(given_answers)
+    correct_answers.map(&:id).sort == given_answers.map(&:id).sort
+  end
 end

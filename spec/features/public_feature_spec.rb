@@ -46,7 +46,7 @@ RSpec.describe "Publics", type: :feature do
       it "does not crash if there are no exams with questions" do
         @question.destroy
         visit '/'
-        expect(page).to have_content("The path is long but the rewards are great")
+        expect(page).to have_content("the rewards are great")
       end
 
       it "only shows one entry for an exam with multiple questions" do

@@ -18,14 +18,8 @@ class PublicController < ApplicationController
 
   def answer
     @question = Question.find(params[:question_id])
-    params[:answer_ids].each do |answer_id|
-      answer = Answer.find(answer_id)
-      UserAnswer.create!(
-        user: current_user,
-        question: @question,
-        answer: answer
-      )
-    end
+    service = AnswerService.new(current_user)
+    service.record_answers(@question, params[:answer_ids])
 
     render json: "{}"
   end

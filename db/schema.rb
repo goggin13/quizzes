@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_030418) do
+ActiveRecord::Schema.define(version: 2021_02_06_141045) do
 
   create_table "answers", force: :cascade do |t|
     t.string "prompt"
@@ -50,6 +50,18 @@ ActiveRecord::Schema.define(version: 2021_02_03_030418) do
     t.index ["user_id"], name: "index_user_answers_on_user_id"
   end
 
+  create_table "user_results", force: :cascade do |t|
+    t.integer "exam_id", null: false
+    t.integer "user_id", null: false
+    t.integer "question_id", null: false
+    t.boolean "correct"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["exam_id"], name: "index_user_results_on_exam_id"
+    t.index ["question_id"], name: "index_user_results_on_question_id"
+    t.index ["user_id"], name: "index_user_results_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: ""
     t.string "encrypted_password", default: "", null: false
@@ -68,4 +80,7 @@ ActiveRecord::Schema.define(version: 2021_02_03_030418) do
   add_foreign_key "user_answers", "answers"
   add_foreign_key "user_answers", "questions"
   add_foreign_key "user_answers", "users"
+  add_foreign_key "user_results", "exams"
+  add_foreign_key "user_results", "questions"
+  add_foreign_key "user_results", "users"
 end
