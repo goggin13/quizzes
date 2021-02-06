@@ -8,5 +8,7 @@ class CreateUserResults < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+
+    UserAnswer.destroy_all
   end
 end

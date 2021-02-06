@@ -54,6 +54,13 @@ RSpec.describe "Publics", type: :feature do
         visit '/'
         expect(page).to have_link(@exam.title, href: "/public/practice/#{@question.id}", count: 1)
       end
+
+      it "shows the exam and number of questions"
+      it "shows your grade for the exam if it is completed"
+      it "does not show your grade for the exam if it is not completed"
+      it "says 'begin' exam if you have not started"
+      it "says 'continue' exam if you have started and not finished"
+      it "says 'review' exam if you have completed the exam"
     end
   end
 

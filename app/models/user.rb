@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   before_save :copy_email_to_username
+  has_many :user_answers, dependent: :destroy
+  has_many :user_results, dependent: :destroy
 
   def copy_email_to_username
     if username.blank? && !email.blank?

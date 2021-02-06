@@ -2,11 +2,21 @@
 
 <ul>
   <li>Users: <%= User.count %></li>
-  <li>Questions Answered : <%= UserAnswer.count %></li>
+  <li>Questions Answered : <%= UserResult.count %></li>
 </ul>
 
 <ul>
-  <% @answered_question_counts.each do |question_id, count| %>
-    <li><%= question_id %> | <%= count %></li>
+  <% Exam.all.each do |exam| %>
+    <li><%= exam.title %> | 
+        <%= exam.user_results.where(correct: true).count / exam.user_results.count.to_f %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% User.all.each do |user| %>
+    <li><%= user.username %> | 
+        <%= user.user_results.where(correct: true).count / user.user_results.count.to_f %>
+    </li>
   <% end %>
 </ul>

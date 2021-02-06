@@ -1,3 +1,4 @@
+<div id="container">
 <h1 class="knightshift-font center">Welcome, <%= current_user.username %></h1>
 <p class="knightshift-font center">
   <%= image_tag("knight.png") %>
@@ -7,14 +8,14 @@
   But the rewards are great
 </p>
 <p class="knightshift-font center">
-  choose from the below to continue your training.
+  Continue your training below
 </p>
 
-<ul id="exam-list" class="center">
+<ul id="exam-list">
   <% @exams.each do |exam| %>
     <li>
       <%= image_tag("crossed-swords.png", class: "shield-bullet") %>
-      <%= link_to(exam.title_and_count, public_practice_path(question_id: exam.questions.first!.id)) %>
+      <%= ExamPresenter.new(exam, current_user).prompt %>
     </li>
   <% end %>
 </ul>
@@ -22,3 +23,4 @@
 <p class="center">
   <%= image_tag("horse.png") %>
 </p>
+</div>
