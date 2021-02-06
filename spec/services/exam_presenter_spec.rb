@@ -22,6 +22,7 @@ RSpec.describe ExamPresenter do
     context "a new exam" do
       it "has a link to 'Begin'" do
         expect(@presenter.prompt).to include("Begin")
+        expect(@presenter.prompt).to include(@exam_url)
       end
 
       it "has the number of questions" do
@@ -38,6 +39,11 @@ RSpec.describe ExamPresenter do
         expect(@presenter.prompt).to include("Continue")
       end
 
+      it "has a link to the next unanswered question" do
+        next_question_url = "public/practice/#{@question_2.id}"
+        expect(@presenter.prompt).to include(next_question_url)
+      end
+
       it "reads how many questions have been answered" do
         expect(@presenter.prompt).to include("( 1/2 questions answered )")
       end
@@ -51,6 +57,7 @@ RSpec.describe ExamPresenter do
 
       it "has a link to 'Review'" do
         expect(@presenter.prompt).to include("Review")
+        expect(@presenter.prompt).to include(@exam_url)
       end
 
       it "has the number of questions" do

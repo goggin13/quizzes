@@ -15,7 +15,17 @@ class ExamPresenter
   end
 
   def exam_link
-    link_to(link_text, public_practice_path(question_id: exam.questions.first!.id))
+    link_to(link_text, practice_url)
+  end
+
+  def practice_url
+    if completed? || !started?
+      public_practice_path(question_id: exam.questions.first!.id)
+    else
+      answered_question_ids = user_results.map(&:question_id)
+      next_question = exam.questions.where.not(id: answered_question_ids).first!
+      public_practice_path(question_id: next_question.id)
+    end
   end
 
   def grade
