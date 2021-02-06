@@ -33,19 +33,24 @@
 <% end %>
 
 <div id="explanation" class="<%= @answered ? '' : 'hide' %>">
-  <p>
-    <% if @next_question.present? %>
+  <% if @next_question.present? %>
+    <p>
       <%= link_to("Next Question", public_practice_path(@next_question)) %>
-    <% else %>
-      <b>You have completed this training session.</b><br/>
-      <%= link_to("Head home", "/") %>
-    <% end %>
-  </p>
+    </p>
+  <% end %>
 
   <% if @question.explanation.present? %>
     <p>
       <%= image_tag("scroll.png", id: "explanation-scroll") %>
       <%= @question.explanation %>
+    </p>
+  <% end %>
+
+  <% if !@next_question.present? %>
+    <p class="center">
+      <b>You have completed this training session.</b> <br/>
+      <%= image_tag("jester.png") %><br/>
+      <%= link_to("Head home", "/") %>
     </p>
   <% end %>
 </div>
