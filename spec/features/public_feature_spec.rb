@@ -40,27 +40,20 @@ RSpec.describe "Publics", type: :feature do
     context "with an open exam" do
       it "shows a link to start practicing" do
         visit '/'
-        expect(page).to have_link(@exam.title, href: "/public/practice/#{@question.id}")
+        expect(page).to have_link("Begin", href: "/public/practice/#{@question.id}")
       end
 
       it "does not crash if there are no exams with questions" do
         @question.destroy
         visit '/'
-        expect(page).to have_content("the rewards are great")
+        expect(page).to have_content("Continue your training below")
       end
 
       it "only shows one entry for an exam with multiple questions" do
         FactoryBot.create(:question, exam: @exam)
         visit '/'
-        expect(page).to have_link(@exam.title, href: "/public/practice/#{@question.id}", count: 1)
+        expect(page).to have_link("Begin", href: "/public/practice/#{@question.id}", count: 1)
       end
-
-      it "shows the exam and number of questions"
-      it "shows your grade for the exam if it is completed"
-      it "does not show your grade for the exam if it is not completed"
-      it "says 'begin' exam if you have not started"
-      it "says 'continue' exam if you have started and not finished"
-      it "says 'review' exam if you have completed the exam"
     end
   end
 
