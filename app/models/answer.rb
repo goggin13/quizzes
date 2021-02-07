@@ -4,7 +4,7 @@ class Answer < ApplicationRecord
   validates_presence_of :prompt
 
   def to_s
-    "#{self.correct.to_s.center(6, " ")} : #{self.prompt}"
+      " #{correct? ? "*" : " "} : #{self.prompt}"
   end
 
   def selected_by?(user)

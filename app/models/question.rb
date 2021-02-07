@@ -7,7 +7,7 @@ class Question < ApplicationRecord
   validates_uniqueness_of :prompt
 
   def to_s
-    "#{prompt}:\n\t#{answers.map(&:to_s).join("\n\t")}"
+    "#{prompt}:\n\t#{answers.map(&:to_s).join("\n\t")}\n\t#{explanation}"
   end
 
   def next_question
