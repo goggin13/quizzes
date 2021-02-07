@@ -1,4 +1,5 @@
 #!/usr/local/bin/ruby
+require "cgi"
 AWS_ACCESS_KEY_ID = File.read(".aws_access_key_id").chomp
 AWS_SECRET_ACCESS_KEY = File.read(".aws_secret_access_key").chomp
 
@@ -9,7 +10,7 @@ command = "AWS_ACCESS_KEY_ID=#{AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=#{AWS_SE
 puts command
 puts `#{command}`
 
-url = "https://s3.amazonaws.com/mydecidekick.com/#{file_name.gsub(' ', '+')}"
+url = "https://s3.amazonaws.com/mydecidekick.com/#{CGI.escape(file_name)}"
 command = "RAILS_ENV=development DEBUG=true REMOTE_FILE_URL=#{url} bundle exec rake ingest:remote_file"
 puts command
 command = "heroku run rake ingest:remote_file REMOTE_FILE_URL=#{url} DEBUG=true"

@@ -1,4 +1,6 @@
-require 'open-uri'
+require "open-uri"
+require "cgi"
+
 namespace :ingest do
   desc "Ingest a local file of questions"
   task :local_file  => :environment do
@@ -13,7 +15,7 @@ namespace :ingest do
     puts "Downloading : '#{remote_file_url}'"
 
     download = open(remote_file_url)
-    local_file_path = "#{download.base_uri.to_s.split('/')[-1]}".gsub("+", " ")
+    local_file_path = CGI.unescape("#{download.base_uri.to_s.split('/')[-1]}")
     # local_file_path = "test.txt"
     puts "Copying '#{remote_file_url}' -> #{local_file_path}"
     IO.copy_stream(download, local_file_path)
