@@ -1,19 +1,21 @@
 ToDo
 
-* error handling / monitoring / logging
-* ingest source
-
->>> post 301 midterm MVP requirements
-
 fast follow
 * ingest pharm style questions
   * Multi-line explanations
   * no letters for choice, just first answer
+* error handling / monitoring / logging
 * use raw SQL on admin page
   * a much better business metrics page - users, questions answered, etc
+* display most missed questions on exam page in copy-pastable way
+  * or, redirect to most missed questions?
+  * most missed question by exam page (?exam_ids=[]...)
+    * show percentage each question receivd
 
 maybe?
+* ingest source
 * query optimizing
+* large queries for practice index page
 * test ingestion; decouple file name and test title
   * prompts on ingest task
 * save your account prompt
@@ -31,6 +33,8 @@ later
 maybe not?
 * leaderboard
 
+X new relic (free)
+X upgrade postgres plan
 X don't upload duplicate questions
 X record users score
 X procfile
@@ -58,27 +62,24 @@ bundle exec rake db:test:prepare
 ```
 
 <%
-sql=
-<<-SQL
+sql="
 SELECT user_id, 
        count(*) as total, 
        sum(case when correct then 1 else 0 end) as correct
 FROM user_results
 GROUP BY user_id
-ORDER BY count(*) DESC;
-SQL
+ORDER BY count(*) DESC;"
+
 ActiveRecord::Base.connection.execute(sql).each { |r| puts r }
 
-sql=
-<<-SQL
+sql=" 
 SELECT question_id,
        count(*) as total
 FROM user_results
 WHERE not correct
 GROUP BY question_id
 ORDER by count(*) DESC
-LIMIT 10;
-SQL
-ActiveRecord::Base.connection.execute(sql).each { |r| puts r }
+LIMIT 20;" 
+ActiveRecord::Base.connection.execute(sql).each { |r| puts Question.find(r["question_id"]); puts "*" * 80; puts "\n" }
 %>
 ```

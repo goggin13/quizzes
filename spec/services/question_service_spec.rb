@@ -42,6 +42,19 @@ RSpec.describe QuestionService do
       expect(correct_answer.correct).to eq(true)
     end
 
+    it "marks the first answer as correct if there are no letters" do
+      QuestionService.ingest("spec/test_files/301 Exam 2-no letters.txt")
+      question = @exam.questions.first!
+      correct_answer = question.answers.where(prompt: "Metabolic acidosis").first!
+      incorrect_answers = question.answers.where(prompt: [
+        "Respiratory alkalosis",
+        "Respiratory acidosis",
+        "Metabolic alkalosis"
+      ]).all
+      expect(correct_answer.correct).to eq(true)
+      expect(incorrect_answers.map(&:correct)).to eq([false, false, false])
+    end
+
     it "marks multiple answers as correct if indicated" do
       QuestionService.ingest("spec/test_files/301 Exam 2-MultipleAnswers.txt")
       question = @exam.questions.first!
@@ -61,6 +74,13 @@ RSpec.describe QuestionService do
       QuestionService.ingest("spec/test_files/301 Exam 2-NoExplanation.txt")
       question = @exam.questions.first!
       expect(question.explanation).to be_nil
+    end
+
+    it "ingests a multiline explanation" do
+      QuestionService.ingest("spec/test_files/301 Exam 2-multiline-explanation.txt")
+      question = @exam.questions.first!
+      expected = "Metabolic acidosis. \n* Respiratory alkalosis...\n* Respiratory acidosis...\n* Metabolic alkalosis..."
+      expect(question.explanation).to eq(expected)
     end
 
     it "strips a leading digit if there is one" do

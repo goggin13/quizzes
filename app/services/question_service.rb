@@ -25,17 +25,14 @@ class QuestionService
   end
 
   def ingest_question(question_blob)
-    lines = question_blob.split("\n")
+    line_blob, explanation = question_blob.split(/explanation:/i)
+    lines = line_blob.split("\n")
     prompt = parse_prompt(lines.shift)
-
-    if lines.last =~ /explanation/i
-      explanation = parse_explanation(lines.pop)
-    end
 
     question = @exam.questions.create!(
       source: @source,
       prompt: prompt,
-      explanation: explanation,
+      explanation: explanation.try(:strip),
     )
 
     ingest_answers(question, lines)
@@ -51,15 +48,12 @@ class QuestionService
     line
   end
 
-  def parse_explanation(line)
-    line[line.index(":") + 1..-1].strip
-  end
-
   def ingest_answers(question, lines)
     if multiple_answers?(lines[0])
       correct_answers = parse_multiple_correct_answers(lines[0])
       lines.shift
     else
+      lines = ensure_leading_letters_present(lines)
       correct_answers = parse_correct_answer(lines[0])
     end
 
@@ -67,7 +61,18 @@ class QuestionService
       letter = line[0]
       prompt = line[3..-1]
       correct = correct_answers.include?(letter)
-      question.answers.create!(prompt: prompt, correct: correct)
+      question.answers.create!(prompt: prompt.strip, correct: correct)
+    end
+  end
+
+  def ensure_leading_letters_present(lines)
+    letters = *("A".."Z")
+    lines.each_with_index.map do |line, index|
+      if (line =~ /^\w[)\.]/).nil?
+        "#{letters[index]}) #{line}"
+      else
+        line
+      end
     end
   end
 
