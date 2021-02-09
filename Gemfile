@@ -57,6 +57,7 @@ end
 
 group :production do
   gem "pg"
+  gem "newrelic_rpm"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
