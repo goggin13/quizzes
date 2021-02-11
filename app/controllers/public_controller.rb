@@ -24,6 +24,11 @@ class PublicController < ApplicationController
     render json: "{}"
   end
 
+  def summary
+    @exam = Exam.find(params[:exam_id])
+    @presenter = ExamSummaryPresenter.new(@exam, current_user)
+  end
+
   def _set_current_user
     unless signed_in?
       password = SecureRandom.hex(4)

@@ -1,0 +1,15 @@
+<h1 class="knightshift-font center"><%= @exam.title %> Results</h1>
+
+<% @presenter.rows.each do |row| %>
+  <p>
+  <%= row.question_prompt %>
+  <ul class="review_answers answered">
+    <% row.answers.each do |answer| %>
+      <li class="<%= answer.correct ? 'correct' : '' %>
+      <%= answer.user_selected ? 'selected' : '' %> ">
+      ( <%= number_to_percentage(answer.selected_by_percentage * 100, precision: 0) %> ) <%= answer.prompt %>
+      </li>
+    <% end %>
+  </ul>
+  </p>
+<% end %>

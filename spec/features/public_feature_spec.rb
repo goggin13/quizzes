@@ -75,7 +75,7 @@ RSpec.describe "Publics", type: :feature do
 
     it "reads the exam is completed if there is no next question" do
       visit "/public/practice/#{@question.id}"
-      expect(page).to have_content("You have completed this training session")
+      expect(page).to have_content("You did it")
     end
 
     describe "single choice question" do

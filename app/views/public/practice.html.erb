@@ -42,15 +42,18 @@
   <% if @question.explanation.present? %>
     <p>
       <%= image_tag("scroll.png", id: "explanation-scroll") %>
-      <%= @question.explanation %>
+      <%= @question.explanation.gsub("*", "<br/>*").html_safe %>
     </p>
   <% end %>
 
   <% if !@next_question.present? %>
     <p class="center">
-      <b>You have completed this training session.</b> <br/>
+      <b>You did it!!</b>
+      <br/>
+      You can <%= link_to("head home", "/") %> to keep training, or 
+      view <%= link_to("your exam summary", public_summary_path(exam_id: @question.exam_id)) %>
+      <br/>
       <%= image_tag("jester.png") %><br/>
-      <%= link_to("Head home", "/") %>
     </p>
   <% end %>
 </div>

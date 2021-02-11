@@ -15,11 +15,13 @@ class ExamPresenter
   end
 
   def exam_link
-    link_to(link_text, practice_url)
+    link_to(link_text, practice_path)
   end
 
-  def practice_url
-    if completed? || !started?
+  def practice_path
+    if completed?
+      public_summary_path(exam_id: exam.id)
+    elsif !started?
       public_practice_path(question_id: exam.questions.first!.id)
     else
       answered_question_ids = user_results.map(&:question_id)

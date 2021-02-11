@@ -7,7 +7,8 @@
   src: asset_url('ringbearer.tff');
 }
 
-#answers li {
+#answers li,
+.review_answers li {
   border: thin solid silver;
   padding: 5px;
   border-radius: 10px;
@@ -19,13 +20,17 @@
   cursor: pointer;
 }
 
+.review_answers li.correct,
 #answers.answered li.correct {
   background-color: lightgreen;
 }
+
+.review_answers li.selected:not(.correct),
 #answers.answered li.selected:not(.correct) {
   background-color: salmon;
 }
 
+.review_answers li.selected,
 #answers li.selected {
   border: thick solid black;
 }

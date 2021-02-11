@@ -57,7 +57,7 @@ RSpec.describe ExamPresenter do
 
       it "has a link to 'Review'" do
         expect(@presenter.prompt).to include("Review")
-        expect(@presenter.prompt).to include(@exam_url)
+        expect(@presenter.prompt).to include("/public/summary/#{@exam.id}")
       end
 
       it "has the number of questions" do

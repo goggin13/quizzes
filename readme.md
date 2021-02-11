@@ -1,11 +1,9 @@
 ToDo
 
-fast follow
-* ingest double digit question prompts
-* display most missed questions on exam page in copy-pastable way
-  * exam summary page with question stats
-* use raw SQL on admin page
-  * a much better business metrics page - users, questions answered, etc
+* exam summary page with question stats
+  * improve UI presentation of %
+
+>>>>> pharm exam release
 
 maybe?
 * ingest source
@@ -31,6 +29,7 @@ later
 maybe not?
 * leaderboard
 
+X ingest double digit question prompts
 X ingest pharm style questions
 X new relic (free)
 X upgrade postgres plan

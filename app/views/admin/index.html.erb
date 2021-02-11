@@ -1,22 +1,46 @@
-<h1>The State of the Kingdowm</h1>
+<h1>The Warroom</h1>
 
-<ul>
-  <li>Users: <%= User.count %></li>
-  <li>Questions Answered : <%= UserResult.count %></li>
-</ul>
+<%= image_tag("shield.png") %>
+<%= image_tag("sword.png") %>
 
-<ul>
-  <% Exam.all.each do |exam| %>
-    <li><%= exam.title %> | 
-        <%= exam.user_results.where(correct: true).count / exam.user_results.count.to_f %>
-    </li>
+<% open_exam_ids = Exam.where(open: true).map(&:id) %>
+
+<p>
+  Users: <%= User.count %><br/>
+  Open Exams Questions Answered: <%= UserResult.where(exam_id: open_exam_ids).count %><br/>
+</p>
+
+<h4>Exams</h4>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Correct</th>
+    <th>Total</th>
+  </tr>
+  <% Exam.where(open: true).all.each do |exam| %>
+    <tr>
+      <td><%= exam.title %></td>
+      <td><%= exam.user_results.where(correct: true).count %></td>
+      <td><%= exam.user_results.count %></td>
+    </tr>
   <% end %>
-</ul>
+</table>
 
-<ul>
+<h4>Users</h4>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Correct</th>
+    <th>Total</th>
+  </tr>
   <% User.all.each do |user| %>
-    <li><%= user.username %> | 
-        <%= user.user_results.where(correct: true).count / user.user_results.count.to_f %>
-    </li>
+    <% total_count = user.user_results.where(exam_id: open_exam_ids).count %>
+    <% if total_count > 0 %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.user_results.where(correct: true, exam_id: open_exam_ids).count %></td>
+        <td><%= total_count %></td>
+      </tr>
+    <% end %>
   <% end %>
-</ul>
+</table>
