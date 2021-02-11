@@ -21,7 +21,7 @@ class ExamSummaryPresenter
       answer = Answer.new
       answer.prompt = result_row["answer_prompt"]
       answer.user_selected = !result_row["user_selected"].blank?
-      answer.correct = (result_row["correct"] == 1)
+      answer.correct = [1, true].include?(result_row["correct"]) # account for sqlite && PG
       answer.selected_by_count = answer_selected_counts[result_row["answer_id"]] || 0
       presenter_row.add_answer(answer)
     end
