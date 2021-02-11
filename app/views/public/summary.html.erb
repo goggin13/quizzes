@@ -3,6 +3,9 @@
 <% @presenter.rows.each do |row| %>
   <p>
   <%= row.question_prompt %>
+  <% if current_user.admin? %>
+    <br/><i><%= row.answered_by_count %> responses</i>
+  <% end %>
   <ul class="review_answers answered">
     <% row.answers.each do |answer| %>
       <li class="<%= answer.correct ? 'correct' : '' %>
