@@ -65,8 +65,4 @@ class ExamPresenter
   def user_results
     exam.user_results.where(user_id: user.id)
   end
-
-  # "<>Begin<> Title ( 50 questions )"
-  # "<>Continue<> Title ( 10/50 questions answered )"
-  # "<>Review<> Title ( 50 questions ) : 80%"
 end

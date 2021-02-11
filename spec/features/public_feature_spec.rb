@@ -60,7 +60,6 @@ RSpec.describe "Publics", type: :feature do
   describe "practice" do
     it "renders the first question" do
       visit "/public/practice/#{@question.id}"
-      expect(page).to have_content(@exam.title)
       expect(page).to have_content(@question.prompt)
       expect(page).to have_content(@answer_A.prompt)
       expect(page).to have_content(@answer_B.prompt)

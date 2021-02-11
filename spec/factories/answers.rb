@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :answer do
-    prompt { "MyString" }
+    sequence(:prompt) { |n| "Answer-Prompt-#{n}" }
     correct { false }
     association :question
   end

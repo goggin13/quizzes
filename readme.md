@@ -1,16 +1,12 @@
 ToDo
 
 fast follow
-* ingest pharm style questions
-  * Multi-line explanations
-  * no letters for choice, just first answer
-* error handling / monitoring / logging
-* use raw SQL on admin page
-  * a much better business metrics page - users, questions answered, etc
 * display most missed questions on exam page in copy-pastable way
   * or, redirect to most missed questions?
   * most missed question by exam page (?exam_ids=[]...)
     * show percentage each question receivd
+* use raw SQL on admin page
+  * a much better business metrics page - users, questions answered, etc
 
 maybe?
 * ingest source
@@ -22,6 +18,7 @@ maybe?
 * display chemical notation nicely
 
 later
+* email on 500s
 * JS testing for practice question interactions
   * cypress
 * PGBackups
@@ -33,6 +30,7 @@ later
 maybe not?
 * leaderboard
 
+X ingest pharm style questions
 X new relic (free)
 X upgrade postgres plan
 X don't upload duplicate questions
