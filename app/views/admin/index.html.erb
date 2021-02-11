@@ -19,7 +19,7 @@
   </tr>
   <% Exam.where(open: true).all.each do |exam| %>
     <tr>
-      <td><%= exam.title %></td>
+      <td><%= link_to(exam.title, public_summary_path(exam_id: exam.id)) %></td>
       <td><%= exam.user_results.where(correct: true).count %></td>
       <td><%= exam.user_results.count %></td>
     </tr>

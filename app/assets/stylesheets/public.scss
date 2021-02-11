@@ -25,11 +25,6 @@
   background-color: lightgreen;
 }
 
-.review_answers li.selected:not(.correct),
-#answers.answered li.selected:not(.correct) {
-  background-color: salmon;
-}
-
 .review_answers li.selected,
 #answers li.selected {
   border: thick solid black;

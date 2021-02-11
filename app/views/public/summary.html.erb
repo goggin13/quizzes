@@ -7,7 +7,10 @@
     <% row.answers.each do |answer| %>
       <li class="<%= answer.correct ? 'correct' : '' %>
       <%= answer.user_selected ? 'selected' : '' %> ">
-      ( <%= number_to_percentage(answer.selected_by_percentage * 100, precision: 0) %> ) <%= answer.prompt %>
+      <% if current_user.admin? %>
+        ( <%= number_to_percentage(answer.selected_by_percentage * 100, precision: 0) %> )
+      <% end %>
+      <%= answer.prompt %>
       </li>
     <% end %>
   </ul>
