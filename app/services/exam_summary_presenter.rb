@@ -45,6 +45,7 @@ class ExamSummaryPresenter
         UA.answer_id = A.id
         AND UA.user_id = :user_id
       WHERE Q.exam_id = :exam_id
+      ORDER BY Q.id ASC
     SQL
 
     Exam.sanitize_sql_for_assignment([query, {exam_id: @exam.id, user_id: @user.id}])
