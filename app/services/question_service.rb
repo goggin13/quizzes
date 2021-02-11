@@ -41,8 +41,9 @@ class QuestionService
   end
 
   def parse_prompt(line)
-    if line =~ /^\d\./
-      line = line[2..-1].strip
+    if line =~ /^\d+[\.)]/
+      end_of_label = (line =~ /[\.)]/) + 1
+      line = line[end_of_label..-1].strip
     end
 
     line

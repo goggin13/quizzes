@@ -1,10 +1,9 @@
 ToDo
 
 fast follow
+* ingest double digit question prompts
 * display most missed questions on exam page in copy-pastable way
-  * or, redirect to most missed questions?
-  * most missed question by exam page (?exam_ids=[]...)
-    * show percentage each question receivd
+  * exam summary page with question stats
 * use raw SQL on admin page
   * a much better business metrics page - users, questions answered, etc
 
@@ -18,6 +17,8 @@ maybe?
 * display chemical notation nicely
 
 later
+* Refactor ExamSummaryPresenter
+  * Query objects for each query
 * email on 500s
 * JS testing for practice question interactions
   * cypress

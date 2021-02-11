@@ -85,7 +85,7 @@ RSpec.describe QuestionService do
 
     it "strips a leading digit if there is one" do
       QuestionService.ingest("spec/test_files/301 Exam 2-LeadingDigits.txt")
-      expect(@exam.questions.count).to eq(3)
+      expect(@exam.questions.count).to eq(7)
       @exam.questions.each_with_index do |question, i|
         expect(question.prompt).to eq("What is love-#{i}?")
       end
