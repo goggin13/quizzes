@@ -1,6 +1,7 @@
 class Question < ApplicationRecord
   belongs_to :exam
   has_many :user_answers, dependent: :destroy # must be before answers to accomodate foreign key constraints
+  has_many :user_results, dependent: :destroy # must be before answers to accomodate foreign key constraints
   has_many :answers, dependent: :destroy
   validates_presence_of :prompt
   validates_presence_of :source

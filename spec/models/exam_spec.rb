@@ -6,6 +6,7 @@ RSpec.describe Exam, type: :model do
     question = FactoryBot.create(:question, exam: exam)
     answer = FactoryBot.create(:answer, question: question)
     user_answer = FactoryBot.create(:user_answer, answer: answer, question: question)
+    user_result = FactoryBot.create(:user_result, question: question, exam: exam)
 
     exam.destroy
     expect(Question.count).to eq(0)
