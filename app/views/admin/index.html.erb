@@ -16,12 +16,14 @@
     <th>Title</th>
     <th>Correct</th>
     <th>Total</th>
+    <th>Users Completed<th>
   </tr>
   <% Exam.where(open: true).all.each do |exam| %>
     <tr>
       <td><%= link_to(exam.title, public_summary_path(exam_id: exam.id)) %></td>
       <td><%= exam.user_results.where(correct: true).count %></td>
       <td><%= exam.user_results.count %></td>
+      <td><%= exam.completed_by_user_count %></td>
     </tr>
   <% end %>
 </table>

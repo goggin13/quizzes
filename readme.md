@@ -1,8 +1,5 @@
 ToDo
 
-* exam summary page with question stats
-  * improve UI presentation of %
-
 >>>>> pharm exam release
 
 maybe?
@@ -29,6 +26,7 @@ later
 maybe not?
 * leaderboard
 
+X exam summary page with question stats
 X ingest double digit question prompts
 X ingest pharm style questions
 X new relic (free)
