@@ -64,7 +64,8 @@ class QuestionService
 
     lines.each do |line|
       letter = line[0]
-      prompt = line[3..-1]
+      end_of_label = (line =~ /[)\.]/) + 1
+      prompt = line[end_of_label..-1].strip
       correct = correct_answers.include?(letter)
       question.answers.create!(prompt: prompt.strip, correct: correct)
     end

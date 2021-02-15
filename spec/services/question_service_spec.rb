@@ -91,6 +91,22 @@ RSpec.describe QuestionService do
       end
     end
 
+    it "strips leading labels from questions" do
+      QuestionService.ingest("spec/test_files/301 Exam 2-LeadingDigits.txt")
+      expect(@exam.questions.count).to eq(7)
+      answers = @exam.questions.first.answers.map(&:prompt)
+      expect(answers.sort).to eq([
+        "Apples",
+        "Bananas",
+        "Carrot sticks",
+        "Diet cola",
+        "Grass",
+        "Oranges",
+        "Peanut butter",
+        "Plums",
+      ])
+    end
+
     it "consumes multiple questions" do
       QuestionService.ingest("spec/test_files/301 Exam 2-MultipleQuestions.txt")
       question = @exam.questions.first!
