@@ -8,6 +8,7 @@
 <p>
   Users: <%= User.count %><br/>
   Open Exams Questions Answered: <%= UserResult.where(exam_id: open_exam_ids).count %><br/>
+  Total Questions Answered: <%= UserResult.count %><br/>
 </p>
 
 <h4>Exams</h4>

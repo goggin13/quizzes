@@ -35,13 +35,14 @@
 <div id="explanation" class="<%= @answered ? '' : 'hide' %>">
   <% if @next_question.present? %>
     <p>
-      <%= link_to("Next Question", public_practice_path(@next_question)) %>
+      <%= link_to("Next Question -->", public_practice_path(@next_question)) %>
     </p>
   <% end %>
 
   <% if @question.explanation.present? %>
     <p>
       <%= image_tag("scroll.png", id: "explanation-scroll") %>
+      <span class="knightshift-font">rationale</span><br/>
       <%= @question.explanation.gsub("*", "<br/>*").html_safe %>
     </p>
   <% end %>

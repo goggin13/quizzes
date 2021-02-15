@@ -19,9 +19,10 @@ RSpec.describe ExamSummaryPresenter do
       expect(rows[0].class).to eq(ExamSummaryPresenter::Row)
     end
 
-    it "provides a row with the question prompt" do
+    it "provides a row with the question prompt and explanation" do
       rows = ExamSummaryPresenter.new(@exam, @user).rows
       expect(rows[0].question_prompt).to eq(@question.prompt)
+      expect(rows[0].explanation).to eq(@question.explanation)
     end
 
     it "provides a row with an array of answers" do

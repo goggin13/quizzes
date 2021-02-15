@@ -6,5 +6,19 @@ command = "cp '#{file_path}' ."
 puts command
 puts `#{command}`
 
-command = "LOCAL_FILE_PATH='#{file_name}' bundle exec rake ingest:local_file RAILS_ENV=development DEBUG=true "
+rails_command = "bundle exec rake ingest:local_file"
+
+args = [
+  "--env RAILS_ENV=development",
+  "--env LOCAL_FILE_PATH='#{file_name}'",
+  "--env DEBUG=true",
+  "-it quizzes-console",
+  rails_command
+]
+
+command = "docker exec #{args.join(" ")}"
 puts command
+puts `#{command}`
+command = "rm '#{file_name}'"
+puts command
+puts `#{command}`

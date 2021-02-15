@@ -1,7 +1,7 @@
 <h1 class="knightshift-font center"><%= @exam.title %> Results</h1>
 
-<% @presenter.rows.each do |row| %>
-  <p>
+<% @presenter.rows.each_with_index do |row, i| %>
+  <h3>Question <%= i+1 %></h3>
   <%= row.question_prompt %>
   <% if current_user.admin? %>
     <br/><i><%= row.answered_by_count %> responses</i>
@@ -15,7 +15,14 @@
       <% end %>
       <%= answer.prompt %>
       </li>
+
     <% end %>
   </ul>
-  </p>
+
+  <% if row.explanation.present? %>
+    <p>
+      <span class="knightshift-font">rationale</span><br/>
+      <%= row.explanation.gsub("*", "<br/>*").html_safe %>
+    </p>
+  <% end %>
 <% end %>

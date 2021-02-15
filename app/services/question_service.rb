@@ -8,7 +8,11 @@ class QuestionService
     exam_name, source = File.basename(file_path).split("-")
     source = source.split(".")[0]
     debug("exam: #{exam_name}")
-    exam = Exam.where(title: exam_name).first!
+    exam = Exam.find_or_create_by(title: exam_name)
+    if !Rails.env.prodution?
+      exam.open = true
+      exam.save!
+    end
 
     new(exam, source).ingest(file_path)
   end

@@ -99,10 +99,12 @@ RSpec.describe QuestionService do
       expect(question.prompt).to eq("A second question")
     end
 
-    it "raises an exception if the exam is not found" do
+    it "creates a new exam if the exam is not foun" do
       expect do
-        QuestionService.ingest("spec/test_files/not a real exam-badformatting.txt")
-      end.to raise_exception(ActiveRecord::RecordNotFound)
+        QuestionService.ingest("spec/test_files/Practice Exam-common knowledge")
+      end.to change(Exam, :count).by(1)
+
+      expect(Exam.last.title).to eq("Practice Exam")
     end
 
     it "does not choke on multiple new lines or leading or trailing newlines" do

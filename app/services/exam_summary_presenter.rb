@@ -14,6 +14,7 @@ class ExamSummaryPresenter
         presenter_row = Row.new
         presenter_row.question_id = result_row["question_id"]
         presenter_row.question_prompt = result_row["question_prompt"]
+        presenter_row.explanation = result_row["explanation"]
         presenter_row.answered_by_count = question_answered_by_counts[presenter_row.question_id]
         presenter_rows << presenter_row
       end
@@ -33,6 +34,7 @@ class ExamSummaryPresenter
     query = <<-SQL
       SELECT
         Q.id as question_id,
+        Q.explanation,
         A.id as answer_id,
         Q.prompt as question_prompt,
         A.prompt as answer_prompt,
@@ -97,7 +99,8 @@ class ExamSummaryPresenter
     attr_accessor :question_prompt,
                   :question_id,
                   :answers,
-                  :answered_by_count
+                  :answered_by_count,
+                  :explanation
 
     def initialize
       @answers = []

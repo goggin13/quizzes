@@ -1,5 +1,9 @@
 ToDo
 
+add explanation to summary page
+summary page with link back to training grounds.
+  label training grounds as such?
+
 >>>>> pharm exam release
 
 maybe?
