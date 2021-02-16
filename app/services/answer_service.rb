@@ -4,6 +4,8 @@ class AnswerService
   end
 
   def record_answers(question, answer_ids)
+    answer_ids = [] if answer_ids.nil?
+
     answers = answer_ids.map do |answer_id|
       answer = Answer.find(answer_id)
     end

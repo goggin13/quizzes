@@ -47,6 +47,11 @@ RSpec.describe "/public", type: :request do
       expect(response).to be_successful
     end
 
+    it "retuns success if no answers are provided" do
+      post "/public/answer/#{@question.id}", params: {}
+      expect(response).to be_successful
+    end
+
     describe "saving results" do
       it "creates a new user result" do
         expect do

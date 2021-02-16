@@ -42,5 +42,15 @@ RSpec.describe AnswerService do
       expect(UserAnswer.where(answer_id: @answer_A.id, user_id: @user.id).count).to eq(1)
       expect(UserAnswer.where(answer_id: @answer_B.id, user_id: @user.id).count).to eq(1)
     end
+
+    it "records no user_answers and an incorrect UserResult if nil is provided" do
+      expect do
+        expect do
+        @service.record_answers(@question, nil)
+        end.to change(UserResult, :count).by(1)
+      end.to change(UserAnswer, :count).by(0)
+
+      expect(UserResult.last.correct).to eq(false)
+    end
   end
 end

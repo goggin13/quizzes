@@ -3,6 +3,7 @@ ToDo
 >>>>> pharm exam release
 
 maybe?
+* checkboxes to open/close exams
 * ingest source
 * query optimizing
 * large queries for practice index page
