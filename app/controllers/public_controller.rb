@@ -29,6 +29,11 @@ class PublicController < ApplicationController
     @presenter = ExamSummaryPresenter.new(@exam, current_user)
   end
 
+  def test_500
+    x = 2 / 0
+    render json: "{}"
+  end
+
   def _set_current_user
     unless signed_in?
       password = SecureRandom.hex(4)

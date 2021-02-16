@@ -4,6 +4,7 @@ ToDo
 
 fast follow
 * email on 500s
+* APM Alert Policy?
 * display chemical notation nicely
 
 >>>>> 301 exam release, pharm exam release
@@ -23,6 +24,8 @@ later
 * background job to clean up unused users
 * show source somewhere?
 * admin page under test
+* ingestion validation
+  * it "raises an error if there is a multi select and not every answer is labeled"
 
 maybe?
 * ingest source
