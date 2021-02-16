@@ -2,27 +2,33 @@ ToDo
 
 >>>>> pharm exam release
 
-maybe?
+fast follow
+* email on 500s
+* display chemical notation nicely
+
+>>>>> 301 exam release, pharm exam release
+
+later
 * checkboxes to open/close exams
-* ingest source
+* use PG locally
 * query optimizing
 * large queries for practice index page
+  * presenter object
+* PGBackups strategy
+* assets resized and to S3
+* Refactor ExamSummaryPresenter
+  * Query objects for each query
+* JS testing for practice question interactions
+  * cypress
+* background job to clean up unused users
+* show source somewhere?
+* admin page under test
+
+maybe?
+* ingest source
 * test ingestion; decouple file name and test title
   * prompts on ingest task
 * save your account prompt
-* display chemical notation nicely
-
-later
-* Refactor ExamSummaryPresenter
-  * Query objects for each query
-* email on 500s
-* JS testing for practice question interactions
-  * cypress
-* PGBackups
-* assets resized and to S3
-* remove from bucket after uploaded
-* background job to clean up unused users
-* show source somewhere?
 
 maybe not?
 * leaderboard
@@ -81,3 +87,5 @@ LIMIT 20;"
 ActiveRecord::Base.connection.execute(sql).each { |r| puts Question.find(r["question_id"]); puts "*" * 80; puts "\n" }
 %>
 ```
+
+heroku logs -n1500 --dyno router | grep -Eo 'status=\d\d\d' | sort | uniq -c
