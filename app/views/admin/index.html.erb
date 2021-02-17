@@ -29,6 +29,26 @@
   <% end %>
 </table>
 
+<h4>Questions</h4>
+<table>
+  <tr>
+    <th>%</th>
+    <th>Total Answered</th>
+    <th>Question</th>
+    <th>Exam</th>
+    <th>Prompt</th>
+  </tr>
+  <% @missed_questions.each do |row| %>
+    <tr>
+      <td><%= row["percentage_correct"] %></td>
+      <td><%= row["total"] %></td>
+      <td><%= link_to("Question", public_practice_path(question_id: row["question_id"])) %></td>
+      <td><%= link_to("Review Exam", public_summary_path(exam_id: row["exam_id"])) %></td>
+      <td><%= row["prompt"] %></td>
+    </tr>
+  <% end %>
+</table>
+
 <h4>Users</h4>
 <table>
   <tr>
