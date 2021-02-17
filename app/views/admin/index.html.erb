@@ -48,22 +48,3 @@
     </tr>
   <% end %>
 </table>
-
-<h4>Users</h4>
-<table>
-  <tr>
-    <th>User</th>
-    <th>Correct</th>
-    <th>Total</th>
-  </tr>
-  <% User.all.each do |user| %>
-    <% total_count = user.user_results.where(exam_id: open_exam_ids).count %>
-    <% if total_count > 0 %>
-      <tr>
-        <td><%= user.username %></td>
-        <td><%= user.user_results.where(correct: true, exam_id: open_exam_ids).count %></td>
-        <td><%= total_count %></td>
-      </tr>
-    <% end %>
-  <% end %>
-</table>
