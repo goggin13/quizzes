@@ -31,7 +31,6 @@ namespace :ingest do
     IO.copy_stream(download, local_file_path)
 
     puts "Ingesting : '#{local_file_path}'"
-    puts Exam.all.collect(&:title)
     QuestionService.ingest(local_file_path)
   end
 end
