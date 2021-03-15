@@ -3,7 +3,7 @@ class PublicController < ApplicationController
   before_action :_set_current_user
 
   def index
-    @exams = Exam.joins(:questions).where(open: true).uniq
+    @exams = Exam.joins(:questions).where(open: true).order("title DESC").uniq
   end
 
   def practice
