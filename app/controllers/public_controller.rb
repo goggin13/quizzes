@@ -42,10 +42,9 @@ class PublicController < ApplicationController
         password: "p#{password}d",
         password_confirmation: "p#{password}d",
       )
-
       sign_in(:user, user)
     end
 
-    #Rails.logger.info "Current user id: #{current_user.id}"
+    Rails.logger.info "Current user id: #{current_user.id}"
   end
 end
