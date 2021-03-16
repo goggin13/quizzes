@@ -6,19 +6,20 @@ class AnswerService
   def record_answers(question, answer_ids)
     answer_ids = [] if answer_ids.nil?
 
-    answers = answer_ids.map do |answer_id|
-      answer = Answer.find(answer_id)
-    end
+    answers = answer_ids.map { |answer_id| Answer.find(answer_id) }
 
     answers.each do |answer|
-      UserAnswer.create!(user: @user, question: question, answer: answer)
+      UserAnswer.find_or_create_by!(user: @user, question: question, answer: answer)
     end
 
-    UserResult.create!(
+    user_result = UserResult.find_or_create_by!(
       exam: question.exam,
       user: @user,
       question: question,
-      correct: question.correct_answers?(answers),
     )
+    user_result.correct = question.correct_answers?(answers)
+    user_result.save!
+
+    user_result
   end
 end

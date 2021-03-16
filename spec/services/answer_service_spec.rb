@@ -52,5 +52,33 @@ RSpec.describe AnswerService do
 
       expect(UserResult.last.correct).to eq(false)
     end
+
+    it "does not create duplicate user answers" do
+      expect do
+        @service.record_answers(@question, [@answer_A.id, @answer_B.id])
+        @service.record_answers(@question, [@answer_A.id, @answer_B.id])
+      end.to change(UserAnswer, :count).by(2)
+    end
+
+    it "does not create duplicate user results" do
+      expect do
+        @service.record_answers(@question, [@answer_A.id, @answer_B.id])
+        @service.record_answers(@question, [@answer_A.id, @answer_B.id])
+      end.to change(UserResult, :count).by(1)
+    end
+
+    it "updates the user result if a new answer is submitted" do
+      expect do
+        @service.record_answers(@question, [@answer_A.id, @answer_B.id])
+      end.to change(UserResult, :count).by(1)
+
+      expect(UserResult.last.correct).to eq(false)
+
+      expect do
+        @service.record_answers(@question, [@answer_A.id, @answer_C.id])
+      end.to change(UserResult, :count).by(0)
+
+      expect(UserResult.last.correct).to eq(true)
+    end
   end
 end
