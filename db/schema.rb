@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_06_141045) do
+ActiveRecord::Schema.define(version: 2021_03_16_044454) do
 
   create_table "answers", force: :cascade do |t|
     t.string "prompt"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_02_06_141045) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["answer_id"], name: "index_user_answers_on_answer_id"
     t.index ["question_id"], name: "index_user_answers_on_question_id"
+    t.index ["user_id", "answer_id"], name: "index_user_answers_on_user_id_and_answer_id", unique: true
     t.index ["user_id"], name: "index_user_answers_on_user_id"
   end
 
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 2021_02_06_141045) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["exam_id"], name: "index_user_results_on_exam_id"
     t.index ["question_id"], name: "index_user_results_on_question_id"
+    t.index ["user_id", "question_id"], name: "index_user_results_on_user_id_and_question_id", unique: true
     t.index ["user_id"], name: "index_user_results_on_user_id"
   end
 
