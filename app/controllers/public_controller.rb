@@ -46,6 +46,6 @@ class PublicController < ApplicationController
       sign_in(:user, user)
     end
 
-    Rails.logger.info "Current user id: #{user.id}"
+    #Rails.logger.info "Current user id: #{current_user.id}"
   end
 end
