@@ -18,6 +18,16 @@ class ExamPresenter
     link_to(link_text, practice_path)
   end
 
+  def image_path
+    if completed?
+      "banners.png"
+    elsif !started?
+      "crossed_swords.png"
+    else
+      "catapult.png"
+    end
+  end
+
   def practice_path
     if completed?
       public_summary_path(exam_id: exam.id)
@@ -32,18 +42,48 @@ class ExamPresenter
 
   def grade
     if completed?
-      float = user_results.where(correct: true).count / exam.questions.count.to_f * 100
+      float = user_results.where(correct: true).count / question_count.to_f * 100
       percentage = number_to_percentage(float, precision: 0)
-      " - #{percentage}"
+      "#{percentage}"
     end
   end
 
+  def letter_grade
+   raw_grade = user_results.where(correct: true).count / question_count.to_f * 100
+   case raw_grade
+     when 90..100
+       "A"
+     when 80..90
+       "B"
+     when 70..80
+       "C"
+     when 60..70
+       "D"
+     else
+       "F"
+		end
+  end
+
+	def user_completed_count
+    return @_user_completed_count if defined?(@_user_completed_count)
+
+    @_user_completed_count = user_results.count
+  end
+
   def question_count
-    if started? && !completed?
-      "#{user_results.count}/#{exam.questions.count} questions answered"
-    else
-      "#{exam.questions.count} questions"
-    end
+    return @_question_count if defined?(@_question_count)
+
+    @_question_count = exam.questions.count
+  end
+
+  def percentage_completed
+    raw_percentage = user_completed_count / question_count.to_f * 100
+
+    number_to_percentage(raw_percentage, precision: 0)
+  end
+
+  def title
+    exam.title.sub("(", "<br/>(").html_safe
   end
 
   def link_text

@@ -8,14 +8,29 @@
   Continue your training below, young NAP
 </p>
 
-<ul id="exam-list">
+<table id="exam-list">
   <% @exams.each do |exam| %>
-    <li>
-      <%= image_tag("crossed-swords.png", class: "shield-bullet") %>
-      <%= ExamPresenter.new(exam, current_user).prompt %>
-    </li>
+    <% presenter = ExamPresenter.new(exam, current_user) %>
+    <tr>
+      <td><%= image_tag(presenter.image_path, class: "shield-bullet") %></td>
+      <td><%= presenter.exam_link %></td>
+      <td class="center"><%= presenter.title %></td>
+      <td class="center">
+        <div class="progress-bar all-rounded <%= presenter.completed? ? "completed" : "" %>">
+          <div class="progress-bar-percentage all-rounded" style="width: <%= presenter.percentage_completed %>">
+            <span>
+              <% if presenter.completed? %>
+                <%= presenter.letter_grade %> - (<%= presenter.grade %>)
+              <% else %>
+                <% presenter.user_completed_count %>/<%= presenter.question_count %>
+              <% end %>
+            </span>
+          </div>
+				</div>
+      </td>
+    </tr>
   <% end %>
-</ul>
+</table>
 
 <p class="center">
   <%= image_tag("horse.png") %>

@@ -1,14 +1,10 @@
 ToDo
 
 On Break
+* checkboxes to open/close exams
 * JS testing for practice question interactions
   * cypress
   * staging site for smoke tests
-* ingestion validation
-  * it "raises an error if there is a multi select and not every answer is labeled"
-  * it "raises an error if there is more than one answer and input didn't have [a,b..]"
-* checkboxes to open/close exams
-  * expiration for exams?
 * /questions/<id> shows answers with links to edit
 * when admin views a question, show edit links for all the prompts
 * nicer text fields for editing questions
@@ -21,7 +17,6 @@ On Break
 * Refactor ExamSummaryPresenter
   * Query objects for each query
 * easy way to log in as admin
-* exam list formatting improvement.
 * display chemical notation nicely
 * admin page under test
 
@@ -45,6 +40,8 @@ maybe not?
 * show source somewhere?
 * Support for images?
 
+X exam list formatting improvement.
+X ingestion validation
 X use PG locally
 x upload a folder of questions
 X alert if question has high failure rate
