@@ -64,18 +64,29 @@ class QuestionService
 
     lines.each do |line|
       letter = line[0]
+      if !(line =~ /^\w[)\.]/)
+        raise "Unlabeled Answer"
+      end
       end_of_label = (line =~ /[)\.]/) + 1
       prompt = line[end_of_label..-1].strip
       correct = correct_answers.include?(letter)
+      correct_answers.delete(letter)
       question.answers.create!(prompt: prompt.strip, correct: correct)
+    end
+
+    if correct_answers.length > 0
+      raise "Extra Answers (#{correct_answers.join(",")})"
     end
   end
 
   def ensure_leading_letters_present(lines)
-    letters = *("A".."Z")
     lines.each_with_index.map do |line, index|
       if (line =~ /^\w[)\.]/).nil?
-        "#{letters[index]}) #{line}"
+        if index == 0
+          "X) #{line}"
+        else
+          "Z) #{line}"
+        end
       else
         line
       end
@@ -87,7 +98,7 @@ class QuestionService
   end
 
   def parse_correct_answer(line)
-    line[0]
+    [line[0]]
   end
 
   def multiple_answers?(line)

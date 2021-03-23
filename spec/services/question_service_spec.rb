@@ -128,5 +128,26 @@ RSpec.describe QuestionService do
         QuestionService.ingest("spec/test_files/301 Exam 2-MultipleNewLines.txt")
       end.to change(@exam.questions, :count).by(2)
     end
+
+    it "does not erroneously assign a correct answer when some multi select answers are unlabeled" do
+      expect do
+        QuestionService.ingest("spec/test_files/301 Exam 2-MultipleAnswersSomeUnlabeled.txt")
+      end.to raise_exception("Unlabeled Answer")
+    end
+
+    it "does not erroneously assign a correct answer when some single select answers are unlabeled" do
+      QuestionService.ingest("spec/test_files/301 Exam 2-OneAnswerSomeUnlabeled.txt")
+      question = @exam.questions.first!
+      correct_answers = question.answers.where(prompt: ["Carrots"]).all
+      incorrect_answers = question.answers.where(prompt: ["Peanuts", "Cola", "Bananas"]).all
+      expect(correct_answers.map(&:correct)).to eq([true])
+      expect(incorrect_answers.map(&:correct)).to eq([false, false, false])
+    end
+
+    it "raises an error if there is an extra multi select answer" do
+      expect do
+        QuestionService.ingest("spec/test_files/301 Exam 2-MultipleAnswersExtraAnswer.txt")
+      end.to raise_exception("Extra Answers (f)")
+    end
   end
 end

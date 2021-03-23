@@ -1,9 +1,6 @@
 ToDo
 
->>>>> 301 exam release, pharm exam release
-
 On Break
-* use PG locally
 * JS testing for practice question interactions
   * cypress
   * staging site for smoke tests
@@ -48,6 +45,7 @@ maybe not?
 * show source somewhere?
 * Support for images?
 
+X use PG locally
 x upload a folder of questions
 X alert if question has high failure rate
 X page with summary stats for questions with most misses

@@ -1,7 +1,7 @@
 What snack choice would be the best suggestion by the nurse for a patient on a renal diet?
-[a,b]
-Carrots
+[a,b,f]
+d. Carrots
 a. Peanuts
 b. Bananas
-Cola
+c. Cola
 explanation: Carrot sticks are the best
