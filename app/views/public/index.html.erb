@@ -22,7 +22,7 @@
               <% if presenter.completed? %>
                 <%= presenter.letter_grade %> - (<%= presenter.grade %>)
               <% else %>
-                <% presenter.user_completed_count %>/<%= presenter.question_count %>
+                <%= presenter.user_completed_count %>/<%= presenter.question_count %>
               <% end %>
             </span>
           </div>
