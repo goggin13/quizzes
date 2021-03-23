@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 
 gem 'devise'
+gem "pg"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'
@@ -32,7 +33,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
-	gem 'sqlite3', '~> 1.4'
   gem 'factory_bot_rails'
 end
 
@@ -56,7 +56,6 @@ group :test do
 end
 
 group :production do
-  gem "pg"
   gem "newrelic_rpm"
 end
 

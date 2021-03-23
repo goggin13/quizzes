@@ -12,7 +12,7 @@ args = [
   "--env RAILS_ENV=development",
   "--env LOCAL_FILE_PATH='#{file_name}'",
   "--env DEBUG=true",
-  "-it quizzes-web",
+  "-it quizzes_app_1",
   rails_command
 ]
 

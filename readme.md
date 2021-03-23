@@ -83,3 +83,10 @@ bundle exec rake db:test:prepare
 ```
 
 ## helpful
+docker-compose up
+docker-compose down
+docker-compose exec app bundle exec rake db:setup db:migrate
+docker exec -it quizzes_database_1 psql -U postgres
+	CREATE USER knightshift;
+	ALTER USER knightshift WITH SUPERUSER;
+docker exec -it quizzes_app_1 bash

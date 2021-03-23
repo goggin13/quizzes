@@ -28,10 +28,10 @@ WORKDIR $RAILS_ROOT
 COPY Gemfile Gemfile
 # COPY Gemfile.lock Gemfile.lock
 
-# Finish establishing our Ruby enviornment
-RUN bundle install
-
 # Copy the Rails application into place
 COPY . .
 
-CMD bundle && bundle exec rails s -b 0.0.0.0
+# Finish establishing our Ruby enviornment
+RUN bundle install
+
+CMD (bundle check || bundle install) && bundle exec rails s -b 0.0.0.0
