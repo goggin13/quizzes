@@ -1,5 +1,10 @@
 <h1 class="knightshift-font">Question <%= @index %>/<%= @total %></h1>
-<p><%= @question.prompt %></p>
+<p>
+  <%= @question.prompt %>
+  <% if current_user.admin? %>
+    <br/><%= link_to("edit", edit_question_path(@question)) %>
+  <% end %>
+</p>
 
 <p class="knightshift-font">
   <%= image_tag("knight_on_horse.png", id: "progress_knight") %>
@@ -26,8 +31,12 @@
              <%= (@answered && answer.selected_by?(@user)) ? 'selected' : '' %> "
       data-answer-id='<%= answer.id %>'>
       <%= answer.prompt %>
+      <% if current_user.admin? %>
+        <br/><%=link_to("edit", edit_answer_path(answer)) %>
+      <% end %>
   </li>
 <% end %>
+
 </ul>
 
 <% if @question.is_multi_select? %>

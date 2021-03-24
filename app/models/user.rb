@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def admin?
-    Rails.env.development? || (email == ADMIN_EMAIL)
+    email == ADMIN_EMAIL
   end
 
   def email_required?

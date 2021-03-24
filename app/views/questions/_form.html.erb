@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= form.label :prompt %>
-    <%= form.text_field :prompt %>
+    <%= form.text_area :prompt, cols: 80, rows: 10 %>
   </div>
 
   <div class="field">
     <%= form.label :source %>
-    <%= form.text_field :source %>
+    <%= form.text_area :source, cols: 50, rows: 2 %>
   </div>
 
   <div class="field">
     <%= form.label :explanation %>
-    <%= form.text_area :explanation %>
+    <%= form.text_area :explanation, cols: 80, rows: 10 %>
   </div>
 
   <div class="actions">

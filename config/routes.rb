@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :answers, only: [:show, :edit, :update, :destroy]
 
   get 'public/index'
+  get 'public/admin_login'
+  post 'public/admin_login', to: 'public#create_admin_session'
+
   root to: "public#index"
   get 'public/practice/:question_id', to: 'public#practice', as: :public_practice
   get 'public/test_500', to: 'public#test_500'

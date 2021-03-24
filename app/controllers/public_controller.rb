@@ -6,6 +6,17 @@ class PublicController < ApplicationController
     @exams = Exam.joins(:questions).where(open: true).order("title DESC").uniq
   end
 
+  def admin_login
+  end
+
+  def create_admin_session
+    user = User.find_by_email(User::ADMIN_EMAIL)
+    if user.valid_password?(params[:admin][:password])
+      sign_in(:user, user)
+    end
+    redirect_to root_path
+  end
+
   def practice
     @question = Question.find(params[:question_id])
     @next_question = @question.next_question
