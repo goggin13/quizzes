@@ -20,7 +20,7 @@
           <div class="progress-bar-percentage all-rounded" style="width: <%= presenter.percentage_completed %>">
             <span>
               <% if presenter.completed? %>
-                <%= presenter.letter_grade %> - (<%= presenter.grade %>)
+                <%= presenter.grade %>
               <% else %>
                 <%= presenter.user_completed_count %>/<%= presenter.question_count %>
               <% end %>
