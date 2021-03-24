@@ -1,0 +1,11 @@
+<div id="container" class="center">
+  <%= image_tag("gate.png") %>
+  <h1 class="knightshift-font center">Speak, friend, and enter</h1>
+  <br/>
+
+  <%= form_tag do %>
+    <%= password_field("admin", "password") %>
+    <br/>
+    <%= submit_tag("Enter") %>
+  <% end %>
+</div>
