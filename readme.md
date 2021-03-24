@@ -2,22 +2,23 @@ ToDo
 
 On Break
 * checkboxes to open/close exams
+* display chemical notation nicely
 * JS testing for practice question interactions
   * cypress
   * staging site for smoke tests
+
+* assets resized and to S3
+* Don't rely on decidekick bucket for S3
 * /questions/<id> shows answers with links to edit
 * when admin views a question, show edit links for all the prompts
 * nicer text fields for editing questions
 * PGBackups strategy
-* assets resized and to S3
-* Don't rely on decidekick bucket for S3
 * query optimizing
 * large queries for practice index page
   * presenter object
 * Refactor ExamSummaryPresenter
   * Query objects for each query
 * easy way to log in as admin
-* display chemical notation nicely
 * admin page under test
 
 maybe?
