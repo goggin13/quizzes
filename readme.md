@@ -1,15 +1,14 @@
 ToDo
 
 On Break
-* easy way to log in as admin
 * checkboxes to open/close exams
 * display chemical notation nicely
 * JS testing for practice question interactions
   * cypress
   * staging site for smoke tests
+* debug cloudfront css
 
 * Don't rely on decidekick bucket for S3
-* /questions/<id> shows answers with links to edit
 * PGBackups strategy
 * query optimizing
 * large queries for practice index page
@@ -38,6 +37,7 @@ maybe not?
 * show source somewhere?
 * Support for images?
 
+X easy way to log in as admin
 X when admin views a question, show edit links for all the prompts
 X nicer text fields for editing questions
 X assets resized and to S3

@@ -15,7 +15,7 @@ RSpec.describe "answers/new", type: :view do
 
     assert_select "form[action=?][method=?]", question_answers_path(@question), "post" do
 
-      assert_select "input[name=?]", "answer[prompt]"
+      assert_select "textarea[name=?]", "answer[prompt]"
 
       assert_select "input[name=?]", "answer[correct]"
 

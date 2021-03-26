@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "public/practice", type: :view do
   before(:each) do
     @user = FactoryBot.create(:user)
+    @current_user = @user
     @exam = FactoryBot.create(:exam)
     @question = FactoryBot.create(:question, exam: @exam)
     @next_question = FactoryBot.create(:question, exam: @exam)

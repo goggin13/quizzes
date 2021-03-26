@@ -1,7 +1,7 @@
 <h1 class="knightshift-font">Question <%= @index %>/<%= @total %></h1>
 <p>
   <%= @question.prompt %>
-  <% if current_user.admin? %>
+  <% if @user.admin? %>
     <br/><%= link_to("edit", edit_question_path(@question)) %>
   <% end %>
 </p>
@@ -31,7 +31,7 @@
              <%= (@answered && answer.selected_by?(@user)) ? 'selected' : '' %> "
       data-answer-id='<%= answer.id %>'>
       <%= answer.prompt %>
-      <% if current_user.admin? %>
+      <% if @user.admin? %>
         <br/><%=link_to("edit", edit_answer_path(answer)) %>
       <% end %>
   </li>

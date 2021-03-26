@@ -10,7 +10,7 @@ RSpec.describe "answers/edit", type: :view do
 
     assert_select "form[action=?][method=?]", answer_path(@answer), "post" do
 
-      assert_select "input[name=?]", "answer[prompt]"
+      assert_select "textarea[name=?]", "answer[prompt]"
 
       assert_select "input[name=?]", "answer[correct]"
 
