@@ -31,8 +31,15 @@
   border: thick solid black;
 }
 
+#answers.answered li.selected:not(.correct) {
+  border: thick solid salmon;
+}
+
+#answers.answered li.selected {
+  border: thick solid green;
+}
+
 #explanation {
-  width: 800px;
 }
 
 #banner-right {
@@ -111,7 +118,7 @@
 	text-align: center;
 }
 #container {
-	width: 600px;
+	width: 300px;
 	margin: 0 auto;
 }
 

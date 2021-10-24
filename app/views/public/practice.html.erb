@@ -7,7 +7,6 @@
 </p>
 
 <p class="knightshift-font">
-  <%= image_tag("knight_on_horse.png", id: "progress_knight") %>
 
   <% if @answered %>
     Review your work
@@ -18,7 +17,7 @@
     Choose wisely
   <% end %>
 
-  <%= image_tag("banners.png", class: "float-right") %>
+  <%#= image_tag("banners.png", class: "float-right") %>
 </p>
 
 <div class="clear"></div>
@@ -46,7 +45,8 @@
 <div id="explanation" class="<%= @answered ? '' : 'hide' %>">
   <% if @next_question.present? %>
     <p>
-      <%= link_to("Next Question -->", public_practice_path(@next_question)) %>
+      <%= image_tag("knight_on_horse.png", id: "progress_knight") %>
+      <%= link_to("Next Challenge", public_practice_path(@next_question), class: "knightshift-font") %>
     </p>
   <% end %>
 
