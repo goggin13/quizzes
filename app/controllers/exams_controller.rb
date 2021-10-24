@@ -3,7 +3,7 @@ class ExamsController < ApplicationController
 
   # GET /exams or /exams.json
   def index
-    @exams = Exam.all
+    @exams = Exam.order(created_at: :desc).all
   end
 
   # GET /exams/1 or /exams/1.json

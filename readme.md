@@ -59,5 +59,7 @@ docker exec -it quizzes-database-1 psql -U postgres
 	ALTER USER knightshift WITH SUPERUSER;
 ./docker/exec.sh
   bundle exec rake db:setup
+  bundle exec rails c
+    User.create!(email: "goggin13@gmail.com", password:"pass123")
   RAILS_ENV=test bundle exec rake db:test:prepare
   RAILS_ENV=test bundle exec rspec --fail-fast
