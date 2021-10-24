@@ -6,7 +6,9 @@ On Break
 * JS testing for practice question interactions
   * cypress
   * staging site for smoke tests
+  * deploy script, to staging, smoke tests, then prod
 * debug cloudfront css
+* documentation (whats out there to generate for rails)
 
 * Don't rely on decidekick bucket for S3
 * PGBackups strategy
@@ -37,41 +39,6 @@ maybe not?
 * show source somewhere?
 * Support for images?
 
-X easy way to log in as admin
-X when admin views a question, show edit links for all the prompts
-X nicer text fields for editing questions
-X assets resized and to S3
-X exam list formatting improvement.
-X ingestion validation
-X use PG locally
-x upload a folder of questions
-X alert if question has high failure rate
-X page with summary stats for questions with most misses
-X email on 500s
-X APM Alert Policy?
-X - add explanation to summary page
-X exam summary page with question stats
-X ingest double digit question prompts
-X ingest pharm style questions
-X new relic (free)
-X upgrade postgres plan
-X don't upload duplicate questions
-X record users score
-X procfile
-X fix answer flashing on advancing question
-X don't crash home page when there is an exam with no questions
-X deploy to heroku
-X script to upload questions to heroku
-X display/handle multiple answer questions
-X thorough tests around practice view
-X troubleshoot font
-X show landing page with no open exams (or multiple open exams?)
-X unregister click listeners after submitting answer
- 
-Public pages
-/
-/practice/question_id
-
 ```
 ./docker/build_and_tag.sh
 ./docker/exec.sh
@@ -82,7 +49,15 @@ bundle exec rake db:test:prepare
 docker-compose up
 docker-compose down
 docker-compose exec app bundle exec rake db:setup db:migrate
-docker exec -it quizzes_database_1 psql -U postgres
+docker exec -it quizzes_app_1 bash
+
+# Setup
+./docker/build_and_tag.sh
+./docker/start_app.sh
+docker exec -it quizzes-database-1 psql -U postgres
 	CREATE USER knightshift;
 	ALTER USER knightshift WITH SUPERUSER;
-docker exec -it quizzes_app_1 bash
+./docker/exec.sh
+  bundle exec rake db:setup
+  RAILS_ENV=test bundle exec rake db:test:prepare
+  RAILS_ENV=test bundle exec rspec --fail-fast
