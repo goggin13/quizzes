@@ -49,7 +49,7 @@ bundle exec rake db:test:prepare
 docker-compose up
 docker-compose down
 docker-compose exec app bundle exec rake db:setup db:migrate
-docker exec -it quizzes_app_1 bash
+docker exec -it quizzes-app-1 bash
 
 # Setup
 ./docker/build_and_tag.sh
