@@ -70,6 +70,12 @@ RSpec.describe QuestionService do
       expect(question.explanation).to eq("Carrot sticks are the best")
     end
 
+    it "saves the explanation for the question if Explanation is capitalized" do
+      QuestionService.ingest("spec/test_files/301 Exam 2-Yoost Explanation.txt")
+      question = @exam.questions.first!
+      expect(question.explanation).to eq("Carrot sticks are the best")
+    end
+
     it "sets the explanation to nil if there is not one" do
       QuestionService.ingest("spec/test_files/301 Exam 2-NoExplanation.txt")
       question = @exam.questions.first!
